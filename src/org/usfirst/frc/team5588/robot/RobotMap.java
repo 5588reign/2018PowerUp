@@ -25,6 +25,7 @@ public class RobotMap {
     public static SpeedController climberMotor;
     public static Encoder leftEncoder;
     public static Encoder rightEncoder;
+    public static AnalogGyro gyro;
     
     //public static AnalogGyro gyroscope = new AnalogGyro(0);
     //public static final int CAMERA_FORWARDS = 1;
@@ -45,6 +46,10 @@ public class RobotMap {
         leftEncoder = new Encoder(2, 3);
         
         rightEncoder = new Encoder(0,1);
+        
+        gyro = new AnalogGyro(1);
+        
+        
 	// For example to map the left and right motors, you could define the
 	// following variables to use with your drivetrain subsystem.
 	// public static int leftMotor = 1;

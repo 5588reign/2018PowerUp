@@ -22,10 +22,12 @@ public class Left1 extends CommandGroup {
     	else if(gameData.charAt(0) == 'L')
     	{
     		addSequential(new LeftSwitchFromLeft());
+    		System.out.println("running left switch from left");
     	}
     	else
     	{
     		addSequential(new RightSwitchFromLeft());
+    		System.out.println("running right switch from left");
     	}
     	
         // Add Commands here:
