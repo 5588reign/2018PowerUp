@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class Baseline extends CommandGroup {
 
     public Baseline() {
+    	addSequential(new TurnByGyro(0.1, 356.5));
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());

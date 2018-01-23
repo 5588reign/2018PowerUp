@@ -14,12 +14,12 @@ public class Left1 extends CommandGroup {
 	
     public Left1() {
     	System.out.println("In left1 gameData is now " + gameData);
-    	if(gameData.charAt(1) == 'L')
+    	if(gameData.length()>1 && gameData.charAt(1) == 'L')
     	{
     		addSequential(new LeftScaleFromLeft());
     		System.out.println("running left scale from left");
     	}
-    	else if(gameData.charAt(0) == 'L')
+    	else if(gameData.length()>0 && gameData.charAt(0) == 'L')
     	{
     		addSequential(new LeftSwitchFromLeft());
     		System.out.println("running left switch from left");

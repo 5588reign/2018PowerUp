@@ -35,10 +35,12 @@ public class Robot extends IterativeRobot {
     
 
 	public static String gamedata = DriverStation.getInstance().getGameSpecificMessage();
+	
 	Command autonomousCommand;
 
 	public static OI oi;
 	public static Drive drive;
+	public static Gyroscope gyro;
 	SendableChooser<CommandGroup> chooser = new SendableChooser<>();
 
 	int session;
@@ -58,6 +60,8 @@ public class Robot extends IterativeRobot {
         
         drive = Drive.getInstance();
 		oi = new OI();
+		gyro = Gyroscope.getInstance();
+		RobotMap.gyro.calibrate();
 		
 		chooser = new SendableChooser<CommandGroup>();
 		chooser.addDefault("Baseline", new Baseline());
@@ -72,7 +76,7 @@ public class Robot extends IterativeRobot {
 		//chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", chooser);
 		
-		server = CameraServer.getInstance(); 
+		server = CameraServer.getInstance();   
         
         targetcam = server.startAutomaticCapture(0); 
         targetcam.setBrightness(1);
@@ -122,6 +126,8 @@ public class Robot extends IterativeRobot {
     	
     	RobotMap.leftEncoder.reset();
     	RobotMap.rightEncoder.reset();
+    	RobotMap.gyro.reset();
+    	
     	
 		// schedule the autonomous command (example)
 		if (autonomousCommand != null) {

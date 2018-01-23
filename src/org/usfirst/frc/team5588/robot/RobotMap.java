@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.Victor;
+import edu.wpi.first.wpilibj.interfaces.Gyro;
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
@@ -25,7 +26,7 @@ public class RobotMap {
     public static SpeedController climberMotor;
     public static Encoder leftEncoder;
     public static Encoder rightEncoder;
-    public static AnalogGyro gyro;
+    public static Gyro gyro;
     
     //public static AnalogGyro gyroscope = new AnalogGyro(0);
     //public static final int CAMERA_FORWARDS = 1;
@@ -47,7 +48,7 @@ public class RobotMap {
         
         rightEncoder = new Encoder(0,1);
         
-        gyro = new AnalogGyro(1);
+        gyro = new AnalogGyro(0);
         
         
 	// For example to map the left and right motors, you could define the
