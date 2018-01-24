@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.interfaces.Gyro;
 /**
  *
  */
-public class Gyroscope extends Subsystem 
+public class Gyroscope extends Subsystem
 {
 
 	
@@ -34,7 +34,7 @@ public class Gyroscope extends Subsystem
 	}
     public void initDefaultCommand() 
     {
-    	setDefaultCommand(new TurnByGyro(0,0));
+    	
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     }

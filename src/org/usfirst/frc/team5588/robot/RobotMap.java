@@ -7,6 +7,7 @@
 
 package org.usfirst.frc.team5588.robot;
 
+import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.SpeedController;
@@ -26,7 +27,7 @@ public class RobotMap {
     public static SpeedController climberMotor;
     public static Encoder leftEncoder;
     public static Encoder rightEncoder;
-    public static Gyro gyro;
+    public static ADXRS450_Gyro gyro;
     
     //public static AnalogGyro gyroscope = new AnalogGyro(0);
     //public static final int CAMERA_FORWARDS = 1;
@@ -48,7 +49,7 @@ public class RobotMap {
         
         rightEncoder = new Encoder(0,1);
         
-        gyro = new AnalogGyro(0);
+        gyro = new ADXRS450_Gyro();
         
         
 	// For example to map the left and right motors, you could define the
