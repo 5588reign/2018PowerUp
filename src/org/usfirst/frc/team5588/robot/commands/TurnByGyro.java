@@ -26,10 +26,10 @@ public class TurnByGyro extends Command
     	requires(Drive.getInstance());
    
     	speed = oneSpeed;
-    	
-    	if(angle > 180 && angle < 360)
+    	//If you want to go left enter a negative angle value
+    	if(angle < 0)
     	{
-    		endingAngle = 360 - angle;
+    		endingAngle = angle;
     		lspeed = -oneSpeed;
     		rspeed = -oneSpeed;
     		

@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
  *
  */
 public class Scale2 extends CommandGroup {
+	//put the robot with the side bumper lines up with the exchange zone
 	
 	/*Robot robot = Robot.getInstance();
 	String gameData = robot.getGameString();
