@@ -7,8 +7,11 @@
 
 package org.usfirst.frc.team5588.robot;
 
+import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.AnalogGyro;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Talon;
@@ -28,15 +31,15 @@ public class RobotMap {
     public static Encoder leftEncoder;
     public static Encoder rightEncoder;
     public static ADXRS450_Gyro gyro;
+    public static TalonSRX raisingMotor;
+    public static DoubleSolenoid unrollRampPneumatic;
     
     //public static AnalogGyro gyroscope = new AnalogGyro(0);
     //public static final int CAMERA_FORWARDS = 1;
 
-
     public static void init() {
         
         driveLeftDrive = new Victor(2);
-        
         driveRightDrive = new Victor(0);
         
         //When using the competition bot (Victoria), use the talon climber motor.
@@ -46,11 +49,15 @@ public class RobotMap {
         //climberMotor = new Victor(4);
         
         leftEncoder = new Encoder(2, 3);
-        
         rightEncoder = new Encoder(0,1);
         
         gyro = new ADXRS450_Gyro();
         
+        raisingMotor = new TalonSRX(0);
+        
+       
+    }
+}
         
 	// For example to map the left and right motors, you could define the
 	// following variables to use with your drivetrain subsystem.
@@ -61,5 +68,4 @@ public class RobotMap {
 	// number and the module. For example you with a rangefinder:
 	// public static int rangefinderPort = 1;
 	// public static int rangefinderModule = 1;
-    }
-}
+   

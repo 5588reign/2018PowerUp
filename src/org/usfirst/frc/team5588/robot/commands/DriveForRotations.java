@@ -1,6 +1,5 @@
 package org.usfirst.frc.team5588.robot.commands;
 
-
 import org.usfirst.frc.team5588.robot.RobotMap;
 import org.usfirst.frc.team5588.robot.subsystems.Drive;
 
@@ -24,7 +23,7 @@ public class DriveForRotations extends Command {
         this.leftSpeed = oneSpeed;
         this.rightSpeed = -1 * oneSpeed;
         this.distance = distance;
-     // distance per pulse = PI * wheel diameter in inches / pulse per revolution * fudge factor;
+        // distance per pulse = PI * wheel diameter in inches / pulse per revolution * fudge factor;
         //change this
         final double distancePerPulse = (Math.PI * 5.85)/ 265 * 1;  //converts pulses to inches
     	RobotMap.rightEncoder.setDistancePerPulse(distancePerPulse);

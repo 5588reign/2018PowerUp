@@ -7,22 +7,59 @@
 
 package org.usfirst.frc.team5588.robot;
 
+import org.usfirst.frc.team5588.robot.commands.DriveForRotations;
+
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.command.Scheduler;
 
 /**
- * This class is the glue that binds the controls on the physical operator
- * interface to the commands and command groups that allow control of the robot.
- */
+ *This class is the glue that binds the controls on the physical operator 
+ *interface to the commands and command groups that allow control of the robot.
+ **/
 public class OI {
 	public Joystick driverJoystick;
     public Joystick manipulatorJoystick;
+    public JoystickButton switchHeight;
+    public JoystickButton scale4;
+    public JoystickButton scale6;
+    public JoystickButton backDown;
+    public JoystickButton openBox;
+    public JoystickButton closeBox;
+    public JoystickButton unrollRamp;
+    public JoystickButton liftRamp;
 
     public OI() {
-       
-
         manipulatorJoystick = new Joystick(1);
-        
         driverJoystick = new Joystick(0);
+        switchHeight = new JoystickButton(manipulatorJoystick, 2);
+        //scale4 = new JoystickButton(manipulatorJoystick, 11);
+        //scale6 = new JoystickButton(manipulatorJoystick, 12);
+        backDown = new JoystickButton(manipulatorJoystick, 1);
+        openBox = new JoystickButton(manipulatorJoystick, 3);
+        closeBox = new JoystickButton(manipulatorJoystick, 4);
+        unrollRamp = new JoystickButton(manipulatorJoystick, 5);
+        liftRamp = new JoystickButton(manipulatorJoystick, 6);
+        
+        switchHeight.whenPressed(new DriveForRotations(0.1, 4));
+        //scale4.whenPressed(new DriveForRotations(0.1, 10));
+        //scale6.whenPressed(new DriveForRotations(0.1, 15));
+        backDown.whenPressed(new DriveForRotations(0.2, 4));
+        openBox.whenPressed(new DriveForRotations(0.2, 10));
+        closeBox.whenPressed(new DriveForRotations(0.2, 15));
+        unrollRamp.whenPressed(new DriveForRotations(0.3, 4));
+        liftRamp.whenPressed(new DriveForRotations(0.3, 15));
+        
+        System.out.println("The POV is " + manipulatorJoystick.getPOV(0));
+        
+        if(manipulatorJoystick.getPOV(0)>= 135 && manipulatorJoystick.getPOV(0) <=225)
+        {
+        	
+        	Scheduler.getInstance().add(new DriveForRotations(-0.1, 4));
+        } 
+        
+        
+        
         
         
     } 
@@ -34,6 +71,8 @@ public class OI {
     public Joystick getManipulatorJoystick() {
         return manipulatorJoystick;
     }
+}
+
 	//// CREATING BUTTONS
 	// One type of button is a joystick button which is any button on a
 	//// joystick.
@@ -61,4 +100,4 @@ public class OI {
 	// Start the command when the button is released and let it run the command
 	// until it is finished as determined by it's isFinished method.
 	// button.whenReleased(new ExampleCommand());
-}
+

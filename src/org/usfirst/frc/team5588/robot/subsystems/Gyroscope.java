@@ -13,7 +13,6 @@ import edu.wpi.first.wpilibj.interfaces.Gyro;
 public class Gyroscope extends Subsystem
 {
 
-	
 	private final Gyro gyro = RobotMap.gyro;
 
         // Put methods for controlling this subsystem

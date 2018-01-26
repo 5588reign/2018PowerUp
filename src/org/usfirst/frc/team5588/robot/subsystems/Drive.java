@@ -1,6 +1,5 @@
 package org.usfirst.frc.team5588.robot.subsystems;
 
-
 import org.usfirst.frc.team5588.robot.RobotMap;
 import org.usfirst.frc.team5588.robot.commands.DriveCommand;
 
@@ -14,7 +13,6 @@ public class Drive extends Subsystem {
 	
 	 private final SpeedController leftDrive = RobotMap.driveLeftDrive;
 	 private final SpeedController rightDrive = RobotMap.driveRightDrive;
-
 
     // Put methods for controlling this subsystem
     // here. Call these from Commands.

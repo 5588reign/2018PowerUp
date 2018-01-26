@@ -49,6 +49,7 @@ public class Robot extends IterativeRobot {
     static UsbCamera targetcam;
     UsbCamera targetcam2;
     int imaqError;
+    
 	/**
 	 * This function is run when the robot is first started up and should be
 	 * used for any initialization code.
@@ -139,6 +140,7 @@ public class Robot extends IterativeRobot {
 	{
 		return gamedata;
 	}
+	
 	/**
 	 * This function is called periodically during autonomous.
 	 */
@@ -164,6 +166,14 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
+		System.out.println("The POV is " + oi.manipulatorJoystick.getPOV(0));
+        
+        if(oi.manipulatorJoystick.getPOV(0)>= 135 && oi.manipulatorJoystick.getPOV(0) <=225)
+        {
+        	
+        	Scheduler.getInstance().add(new DriveForRotations(0.1,4));
+        }
+		
 	}
 
 	/**

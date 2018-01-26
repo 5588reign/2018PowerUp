@@ -33,7 +33,6 @@ public class DriveCommand extends Command {
     	else
     		fSpeed = -1 * (readfSpeed * readfSpeed);
     	
-    	
     	double sSpeed = -deadzone(Robot.oi.driverJoystick.getRawAxis(1));
     	double lSpeed = (fSpeed + sSpeed);
     	double rSpeed = (fSpeed - sSpeed);
