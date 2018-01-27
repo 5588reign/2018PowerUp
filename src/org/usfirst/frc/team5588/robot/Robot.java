@@ -117,6 +117,11 @@ public class Robot extends IterativeRobot {
 		System.out.println("the fms says" + gamedata);
 		
 		autonomousCommand = (Command)chooser.getSelected();
+		
+		if(gamedata == null)
+		{
+			autonomousCommand = new Baseline();
+		}
 
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector",
@@ -166,13 +171,8 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
-		System.out.println("The POV is " + oi.manipulatorJoystick.getPOV(0));
-        
-        if(oi.manipulatorJoystick.getPOV(0)>= 135 && oi.manipulatorJoystick.getPOV(0) <=225)
-        {
-        	
-        	Scheduler.getInstance().add(new DriveForRotations(0.1,4));
-        }
+		
+		
 		
 	}
 

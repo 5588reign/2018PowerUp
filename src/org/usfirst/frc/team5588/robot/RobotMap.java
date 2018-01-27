@@ -55,7 +55,7 @@ public class RobotMap {
         
         raisingMotor = new TalonSRX(0);
         
-       
+        unrollRampPneumatic = new DoubleSolenoid(0, 1);
     }
 }
         

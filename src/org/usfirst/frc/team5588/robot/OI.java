@@ -8,9 +8,14 @@
 package org.usfirst.frc.team5588.robot;
 
 import org.usfirst.frc.team5588.robot.commands.DriveForRotations;
+import org.usfirst.frc.team5588.robot.commands.PneumaticControl;
 
+import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.buttons.Trigger;
 import edu.wpi.first.wpilibj.command.Scheduler;
 
 /**
@@ -19,10 +24,10 @@ import edu.wpi.first.wpilibj.command.Scheduler;
  **/
 public class OI {
 	public Joystick driverJoystick;
-    public Joystick manipulatorJoystick;
+    public XboxController manipulatorJoystick;
     public JoystickButton switchHeight;
-    public JoystickButton scale4;
-    public JoystickButton scale6;
+    public Trigger scale4;
+    public Trigger scale6;
     public JoystickButton backDown;
     public JoystickButton openBox;
     public JoystickButton closeBox;
@@ -30,11 +35,11 @@ public class OI {
     public JoystickButton liftRamp;
 
     public OI() {
-        manipulatorJoystick = new Joystick(1);
+        manipulatorJoystick = new XboxController(1);
         driverJoystick = new Joystick(0);
         switchHeight = new JoystickButton(manipulatorJoystick, 2);
-        //scale4 = new JoystickButton(manipulatorJoystick, 11);
-        //scale6 = new JoystickButton(manipulatorJoystick, 12);
+        //scale4 = new 
+        //scale6 = new Trigger(manipulatorJoystick, 12);
         backDown = new JoystickButton(manipulatorJoystick, 1);
         openBox = new JoystickButton(manipulatorJoystick, 3);
         closeBox = new JoystickButton(manipulatorJoystick, 4);
@@ -47,19 +52,23 @@ public class OI {
         backDown.whenPressed(new DriveForRotations(0.2, 4));
         openBox.whenPressed(new DriveForRotations(0.2, 10));
         closeBox.whenPressed(new DriveForRotations(0.2, 15));
-        unrollRamp.whenPressed(new DriveForRotations(0.3, 4));
-        liftRamp.whenPressed(new DriveForRotations(0.3, 15));
+        unrollRamp.whenPressed(new PneumaticControl(DoubleSolenoid.Value.kForward));
+        liftRamp.whenPressed(new PneumaticControl(DoubleSolenoid.Value.kReverse));
         
-        System.out.println("The POV is " + manipulatorJoystick.getPOV(0));
+        /*System.out.println("The POV is " + manipulatorJoystick.getPOV(0));
         
         if(manipulatorJoystick.getPOV(0)>= 135 && manipulatorJoystick.getPOV(0) <=225)
         {
-        	
         	Scheduler.getInstance().add(new DriveForRotations(-0.1, 4));
         } 
-        
-        
-        
+        if(manipulatorJoystick.getPOV(0)>= 315 || manipulatorJoystick.getPOV(0) <=45)
+        {
+        	Scheduler.getInstance().add(new DriveForRotations(-0.1, 4));
+        } 
+        if(manipulatorJoystick.getTriggerAxis(Hand.kLeft)>.1)
+        {
+        	//move up 6
+        }*/
         
         
     } 
@@ -68,7 +77,7 @@ public class OI {
         return driverJoystick;
     }
 
-    public Joystick getManipulatorJoystick() {
+    public XboxController getManipulatorJoystick() {
         return manipulatorJoystick;
     }
 }
