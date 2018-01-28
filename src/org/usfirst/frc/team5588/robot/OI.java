@@ -50,10 +50,10 @@ public class OI {
         //scale4.whenPressed(new DriveForRotations(0.1, 10));
         //scale6.whenPressed(new DriveForRotations(0.1, 15));
         backDown.whenPressed(new DriveForRotations(0.2, 4));
-        openBox.whenPressed(new DriveForRotations(0.2, 10));
-        closeBox.whenPressed(new DriveForRotations(0.2, 15));
-        unrollRamp.whenPressed(new PneumaticControl(DoubleSolenoid.Value.kForward));
-        liftRamp.whenPressed(new PneumaticControl(DoubleSolenoid.Value.kReverse));
+        openBox.whenPressed(new PneumaticControl(DoubleSolenoid.Value.kForward, 2));
+        closeBox.whenPressed(new PneumaticControl(DoubleSolenoid.Value.kReverse, 2));
+        unrollRamp.whenPressed(new PneumaticControl(DoubleSolenoid.Value.kForward, 0));
+        liftRamp.whenPressed(new PneumaticControl(DoubleSolenoid.Value.kReverse, 0));
         
         /*System.out.println("The POV is " + manipulatorJoystick.getPOV(0));
         

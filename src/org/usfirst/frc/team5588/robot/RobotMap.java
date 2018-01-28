@@ -33,20 +33,14 @@ public class RobotMap {
     public static ADXRS450_Gyro gyro;
     public static TalonSRX raisingMotor;
     public static DoubleSolenoid unrollRampPneumatic;
+    public static DoubleSolenoid liftRampPneumatic;
     
-    //public static AnalogGyro gyroscope = new AnalogGyro(0);
     //public static final int CAMERA_FORWARDS = 1;
 
     public static void init() {
         
         driveLeftDrive = new Victor(2);
         driveRightDrive = new Victor(0);
-        
-        //When using the competition bot (Victoria), use the talon climber motor.
-        climberMotor = new Talon(4);
-        
-        //When using the backup bot (Feodora), use the victor climber motor.
-        //climberMotor = new Victor(4);
         
         leftEncoder = new Encoder(2, 3);
         rightEncoder = new Encoder(0,1);
@@ -56,6 +50,8 @@ public class RobotMap {
         raisingMotor = new TalonSRX(0);
         
         unrollRampPneumatic = new DoubleSolenoid(0, 1);
+        liftRampPneumatic = new DoubleSolenoid(2, 3);
+        
     }
 }
         
