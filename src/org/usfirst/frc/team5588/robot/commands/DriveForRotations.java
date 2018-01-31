@@ -62,9 +62,9 @@ public class DriveForRotations extends Command {
     	Drive.getInstance().setSpeed(this.leftSpeed + correctingLeft, this.rightSpeed + correctingRight); 
     	
     	//Use this to TEST if your encoder correcting is working properly
-    	System.out.println("The right encoder is at " + rightDistanceTraveled);
-    	System.out.println("The left encoder is at " + leftDistanceTraveled);
-    	System.out.println("The encoder counts is " + RobotMap.rightEncoder.get());
+    	//System.out.println("The right encoder is at " + rightDistanceTraveled);
+    	//System.out.println("The left encoder is at " + leftDistanceTraveled);
+    	//System.out.println("The encoder counts is " + RobotMap.rightEncoder.get());
     }
 
     // Make this return true when this Command no longer needs to run execute()

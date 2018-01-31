@@ -8,7 +8,8 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class Baseline extends CommandGroup {
 
     public Baseline() {
-    	addSequential(new DriveForRotations(0.5, 168));
+    	addParallel(new UltrasonicCommand(30));
+    	addParallel(new DriveForRotations(0.5, 20000)); //Should be 168 for distance
     	
     }
 }

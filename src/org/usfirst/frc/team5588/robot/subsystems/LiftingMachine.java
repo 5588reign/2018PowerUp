@@ -13,20 +13,20 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class LiftingMachine extends Subsystem {
 
-	private final TalonSRX lift = RobotMap.raisingMotor;
+	//private final TalonSRX lift = RobotMap.raisingMotor;
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 	public void setControlMode(double distance)
 	{
-		lift.set(ControlMode.Position, lift.getDeviceID());
+		//lift.set(ControlMode.Position, lift.getDeviceID());
 	}
 	public void setInverted()
 	{
-		lift.setInverted(true);
+		//lift.setInverted(true);
 	}
 	public void setPower(double speed)
 	{
-		lift.set(ControlMode.Position, speed);
+		//lift.set(ControlMode.Position, speed);
 	}
 
     public void initDefaultCommand() {

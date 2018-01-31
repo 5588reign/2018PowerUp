@@ -11,10 +11,12 @@ import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.AnalogGyro;
+import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Talon;
+import edu.wpi.first.wpilibj.Ultrasonic;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.interfaces.Gyro;
 
@@ -31,9 +33,11 @@ public class RobotMap {
     public static Encoder leftEncoder;
     public static Encoder rightEncoder;
     public static ADXRS450_Gyro gyro;
-    public static TalonSRX raisingMotor;
-    public static DoubleSolenoid unrollRampPneumatic;
-    public static DoubleSolenoid liftRampPneumatic;
+    //public static TalonSRX raisingMotor;
+    //public static DoubleSolenoid unrollRampPneumatic;
+    //public static DoubleSolenoid liftRampPneumatic;
+    public static Ultrasonic ultrasonic;
+    public static AnalogInput ai;
     
     //public static final int CAMERA_FORWARDS = 1;
 
@@ -47,11 +51,13 @@ public class RobotMap {
         
         gyro = new ADXRS450_Gyro();
         
-        raisingMotor = new TalonSRX(0);
+        //raisingMotor = new TalonSRX(0);
         
-        unrollRampPneumatic = new DoubleSolenoid(0, 1);
-        liftRampPneumatic = new DoubleSolenoid(2, 3);
+        //unrollRampPneumatic = new DoubleSolenoid(0, 1);
+        //liftRampPneumatic = new DoubleSolenoid(2, 3);
         
+        //ultrasonic = new Ultrasonic(0,1);//, Ultrasonic.Unit.kInches);
+        ai = new AnalogInput(0);
     }
 }
         

@@ -1,64 +1,59 @@
 package org.usfirst.frc.team5588.robot.commands;
 
 import org.usfirst.frc.team5588.robot.RobotMap;
+import org.usfirst.frc.team5588.robot.subsystems.Drive;
+import org.usfirst.frc.team5588.robot.subsystems.UltrasonicSensor;
 
-import edu.wpi.first.wpilibj.Compressor;
-import edu.wpi.first.wpilibj.DoubleSolenoid;
-import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
+import edu.wpi.first.wpilibj.AnalogInput;
+import edu.wpi.first.wpilibj.Ultrasonic;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class PneumaticControl extends Command {
-	
-	Value value = DoubleSolenoid.Value.kOff;
-	Compressor c;
-	DoubleSolenoid.Value reading;
-	int port = -1;
+public class UltrasonicCommand extends Command {
 
-    public PneumaticControl(DoubleSolenoid.Value v, int p) {
-    	
+	
+	AnalogInput input = RobotMap.ai;
+	double distance = 100;
+	double prevDist = 100;
+	double inches;
+	double volts;
+	
+
+    public UltrasonicCommand(double i) {
+    	requires(UltrasonicSensor.getInstance());
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	value = v;
-    	c = new Compressor(0);
-    	//port is the lower of the two port numbers the pneumatic uses in the PCM
-    	port = p;
+    	inches = i;
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	c.setClosedLoopControl(true);
-    	/*if(port == 0)
-    	{
-    		RobotMap.unrollRampPneumatic.set(value);
-    	}
-    	else if(port == 2)
-    	{
-    		RobotMap.liftRampPneumatic.set(value);
-    	}*/
     	
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	prevDist = distance;
+    	volts = input.getVoltage();
+    	distance = volts * 40.2969077;
+    	System.out.println("Current distance: " + distance + "\nPrevious Distance: " + prevDist);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return(true);
-        
+    	return(distance <= inches && prevDist <= inches && distance > 25);
     }
 
     // Called once after isFinished returns true
     protected void end() {
-
+    	Drive.getInstance().stop();
+    	System.out.println("Ultrasonic command has stopped");
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	end();
     }
 }
