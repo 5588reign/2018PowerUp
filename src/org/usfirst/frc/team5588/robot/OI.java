@@ -29,7 +29,7 @@ public class OI {
     public Trigger scale4;
     public Trigger scale6;
     public JoystickButton backDown;
-    public JoystickButton openBox;
+    public JoystickButton openCloseBox;
     public JoystickButton closeBox;
     public JoystickButton unrollRamp;
     public JoystickButton liftRamp;
@@ -41,7 +41,7 @@ public class OI {
         //scale4 = new 
         //scale6 = new Trigger(manipulatorJoystick, 12);
         backDown = new JoystickButton(manipulatorJoystick, 1);
-        openBox = new JoystickButton(manipulatorJoystick, 3);
+        openCloseBox = new JoystickButton(manipulatorJoystick, 3);
         closeBox = new JoystickButton(manipulatorJoystick, 4);
         unrollRamp = new JoystickButton(manipulatorJoystick, 5);
         liftRamp = new JoystickButton(manipulatorJoystick, 6);
@@ -50,10 +50,10 @@ public class OI {
         //scale4.whenPressed(new DriveForRotations(0.1, 10));
         //scale6.whenPressed(new DriveForRotations(0.1, 15));
         backDown.whenPressed(new DriveForRotations(0.2, 4));
-        //openBox.whenPressed(new PneumaticControl(DoubleSolenoid.Value.kForward, 2));
+        openCloseBox.whenPressed(new PneumaticControl(2));
         //closeBox.whenPressed(new PneumaticControl(DoubleSolenoid.Value.kReverse, 2));
         //unrollRamp.whenPressed(new PneumaticControl(DoubleSolenoid.Value.kForward, 0));
-        //liftRamp.whenPressed(new PneumaticControl(DoubleSolenoid.Value.kReverse, 0));
+        liftRamp.whenPressed(new PneumaticControl(0));
         
         /*System.out.println("The POV is " + manipulatorJoystick.getPOV(0));
         

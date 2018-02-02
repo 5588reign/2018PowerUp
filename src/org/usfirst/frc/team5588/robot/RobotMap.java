@@ -34,8 +34,8 @@ public class RobotMap {
     public static Encoder rightEncoder;
     public static ADXRS450_Gyro gyro;
     //public static TalonSRX raisingMotor;
-    //public static DoubleSolenoid unrollRampPneumatic;
-    //public static DoubleSolenoid liftRampPneumatic;
+    public static DoubleSolenoid unrollRampPneumatic;
+    public static DoubleSolenoid liftRampPneumatic;
     public static Ultrasonic ultrasonic;
     public static AnalogInput ai;
     
@@ -53,10 +53,9 @@ public class RobotMap {
         
         //raisingMotor = new TalonSRX(0);
         
-        //unrollRampPneumatic = new DoubleSolenoid(0, 1);
-        //liftRampPneumatic = new DoubleSolenoid(2, 3);
+        unrollRampPneumatic = new DoubleSolenoid(0, 1);
+        liftRampPneumatic = new DoubleSolenoid(2, 3);
         
-        //ultrasonic = new Ultrasonic(0,1);//, Ultrasonic.Unit.kInches);
         ai = new AnalogInput(0);
     }
 }
