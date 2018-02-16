@@ -8,6 +8,7 @@
 package org.usfirst.frc.team5588.robot;
 
 import org.usfirst.frc.team5588.robot.commands.DriveForRotations;
+import org.usfirst.frc.team5588.robot.commands.LiftCommand;
 import org.usfirst.frc.team5588.robot.commands.PneumaticControl;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
@@ -46,7 +47,7 @@ public class OI {
         unrollRamp = new JoystickButton(manipulatorJoystick, 5);
         liftRamp = new JoystickButton(manipulatorJoystick, 6);
         
-        switchHeight.whenPressed(new DriveForRotations(0.1, 4));
+        switchHeight.whenPressed(new LiftCommand());
         //scale4.whenPressed(new DriveForRotations(0.1, 10));
         //scale6.whenPressed(new DriveForRotations(0.1, 15));
         backDown.whenPressed(new DriveForRotations(0.2, 4));
@@ -54,6 +55,7 @@ public class OI {
         //closeBox.whenPressed(new PneumaticControl(DoubleSolenoid.Value.kReverse, 2));
         //unrollRamp.whenPressed(new PneumaticControl(DoubleSolenoid.Value.kForward, 0));
         liftRamp.whenPressed(new PneumaticControl(0));
+       
         
         /*System.out.println("The POV is " + manipulatorJoystick.getPOV(0));
         

@@ -70,14 +70,14 @@ public class Robot extends IterativeRobot {
 		
 		chooser = new SendableChooser<CommandGroup>();
 		chooser.addDefault("Baseline", new Baseline());
-		chooser.addObject("Scale1", new Scale1());
+		/*chooser.addObject("Scale1", new Scale1());
 		chooser.addObject("Scale2", new Scale2());
 		chooser.addObject("Scale3", new Scale3());
 		chooser.addObject("Switch1", new Switch1());
 		chooser.addObject("Switch2", new Switch2());
 		chooser.addObject("Switch3", new Switch3());
 		chooser.addObject("Left1", new Left1());
-		chooser.addObject("Right3", new Right3());
+		chooser.addObject("Right3", new Right3());*/
 		//chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", chooser);
 		

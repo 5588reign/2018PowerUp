@@ -8,7 +8,31 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class LeftScaleFromCenter extends CommandGroup {
 
     public LeftScaleFromCenter() {
-        
+    	addSequential(new DriveForRotations(0.2,40));
+    	addSequential(new TurnByGyro(0.2, -90));
+    	addSequential(new DriveForRotations(0.2, 106.44));
+    	addSequential(new TurnByGyro(0.2, 90));
+    	addSequential(new DriveForRotations(0.2, 221));
+    	addSequential(new TurnByGyro(0.2, 90));
+    	addSequential(new DriveForRotations(0.2, 60));
+    	addSequential(new TurnByGyro(0.2, -90));
+    	addSequential(new UltrasonicCommand(0.2, 30));
+    	//addSequential(new DriveForRotations())
+        /*forward
+         * turn -90
+         * forward
+         * turn 90
+         * forward
+         * turn 90
+         * forward
+         * turn -90
+         * sensor forward
+         * talon raise with sensor
+         * talon raise until sensor no longer sees
+         * talon raise a little more
+         * forward a bit
+         * release pneumatics
+         */
     }
 }
 

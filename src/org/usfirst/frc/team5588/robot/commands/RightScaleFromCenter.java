@@ -8,7 +8,15 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class RightScaleFromCenter extends CommandGroup {
 
     public RightScaleFromCenter() {
-       
+    	addSequential(new DriveForRotations(0.2,40));
+    	addSequential(new TurnByGyro(0.2, 90));
+    	addSequential(new DriveForRotations(0.2, 130.44));
+    	addSequential(new TurnByGyro(0.2, -90));
+    	addSequential(new DriveForRotations(0.2, 221));
+    	addSequential(new TurnByGyro(0.2, -90));
+    	addSequential(new DriveForRotations(0.2, 60));
+    	addSequential(new TurnByGyro(0.2, 90));
+    	addSequential(new UltrasonicCommand(0.2, 30));
     }
 }
 

@@ -7,17 +7,21 @@
 
 package org.usfirst.frc.team5588.robot;
 
+import com.ctre.phoenix.motorcontrol.SensorCollection;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.Ultrasonic;
 import edu.wpi.first.wpilibj.Victor;
+import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.interfaces.Gyro;
 
 /**
@@ -33,25 +37,26 @@ public class RobotMap {
     public static Encoder leftEncoder;
     public static Encoder rightEncoder;
     public static ADXRS450_Gyro gyro;
-    //public static TalonSRX raisingMotor;
+    public static WPI_TalonSRX raisingMotor;
     public static DoubleSolenoid unrollRampPneumatic;
     public static DoubleSolenoid liftRampPneumatic;
-    public static Ultrasonic ultrasonic;
     public static AnalogInput ai;
+    public static SensorCollection sensor;
     
     //public static final int CAMERA_FORWARDS = 1;
 
     public static void init() {
         
-        driveLeftDrive = new Victor(2);
-        driveRightDrive = new Victor(0);
+        driveLeftDrive = new VictorSP(2);
+        driveRightDrive = new VictorSP(0);
         
         leftEncoder = new Encoder(2, 3);
         rightEncoder = new Encoder(0,1);
         
         gyro = new ADXRS450_Gyro();
         
-        //raisingMotor = new TalonSRX(0);
+        raisingMotor = new WPI_TalonSRX(0);
+        sensor = new SensorCollection(raisingMotor);
         
         unrollRampPneumatic = new DoubleSolenoid(0, 1);
         liftRampPneumatic = new DoubleSolenoid(2, 3);

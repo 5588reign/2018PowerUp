@@ -25,7 +25,7 @@ public class DriveForRotations extends Command {
         this.distance = distance;
         // distance per pulse = PI * wheel diameter in inches / pulse per revolution * fudge factor;
         //change this
-        final double distancePerPulse = (Math.PI * 5.85)/ 265 * 1;  //converts pulses to inches
+        final double distancePerPulse = (Math.PI * 5.90625)/ 256 * 1;  //converts pulses to inches
     	RobotMap.rightEncoder.setDistancePerPulse(distancePerPulse);
     	RobotMap.leftEncoder.setDistancePerPulse(distancePerPulse);
         // Use requires() here to declare subsystem dependencies

@@ -1,7 +1,12 @@
 package org.usfirst.frc.team5588.robot.commands;
 
 import org.usfirst.frc.team5588.robot.Robot;
+import org.usfirst.frc.team5588.robot.RobotMap;
 import org.usfirst.frc.team5588.robot.subsystems.LiftingMachine;
+
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.FeedbackDevice;
+import com.ctre.phoenix.motorcontrol.NeutralMode;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -13,16 +18,21 @@ public class LiftCommand extends Command {
 	double leftTrigRead = 0;
 	double rightTrigRead = 0;
 	int readPOV = -1;
+	int position = 0;
+	
 
     public LiftCommand() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(LiftingMachine.getInstance());
+    	
+    	
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
     	System.out.println("starting LiftCommand");
+    	
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -30,6 +40,10 @@ public class LiftCommand extends Command {
     	leftTrigRead = Robot.oi.manipulatorJoystick.getRawAxis(2);
     	rightTrigRead = Robot.oi.manipulatorJoystick.getRawAxis(3);
     	readPOV = Robot.oi.manipulatorJoystick.getPOV(0);
+    	position = RobotMap.sensor.getQuadraturePosition();
+    	System.out.println("Position is reading " + position);
+    	RobotMap.raisingMotor.set(ControlMode.PercentOutput, .2);
+    	
     	
     	if(leftTrigRead >= .9)
     	{

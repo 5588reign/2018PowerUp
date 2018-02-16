@@ -8,10 +8,12 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class LeftScaleFromLeft extends CommandGroup {
 
     public LeftScaleFromLeft() {
-    	addSequential(new DriveForRotations(0.5, 324));
+    	addSequential(new DriveForRotations(0.5, 289.75));
     	addSequential(new TurnByGyro(.15, 90));
-    	addSequential(new DriveForRotations(0.5, 38));
-    	addSequential(new DriveForRotations(.1,10));
+    	//find height by Ultrasonic 
+    	
+    	//addSequential(new DriveForRotations(0.5, 38));
+    	//addSequential(new DriveForRotations(.1,10));
         
     }
 }
