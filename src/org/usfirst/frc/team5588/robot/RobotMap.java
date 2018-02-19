@@ -37,11 +37,13 @@ public class RobotMap {
     public static Encoder leftEncoder;
     public static Encoder rightEncoder;
     public static ADXRS450_Gyro gyro;
-    //public static WPI_TalonSRX raisingMotor;
-    //public static DoubleSolenoid unrollRampPneumatic;
-    //public static DoubleSolenoid liftRampPneumatic;
-    //public static AnalogInput ai;
-    //public static SensorCollection sensor;
+    public static WPI_TalonSRX raisingMotor;
+    public static DoubleSolenoid liftRampPneumatic;
+    public static DoubleSolenoid armPneumatic;
+    public static DoubleSolenoid pinRelease;
+    public static DoubleSolenoid releaseRamp;
+    public static AnalogInput ai;
+    public static SensorCollection sensor;
     
     //public static final int CAMERA_FORWARDS = 1;
 
@@ -55,13 +57,14 @@ public class RobotMap {
         
         gyro = new ADXRS450_Gyro();
         
-        //raisingMotor = new WPI_TalonSRX(0);
-        //sensor = new SensorCollection(raisingMotor);
+        raisingMotor = new WPI_TalonSRX(0);
         
-        //unrollRampPneumatic = new DoubleSolenoid(0, 1);
-        //liftRampPneumatic = new DoubleSolenoid(2, 3);
+        liftRampPneumatic = new DoubleSolenoid(0, 1);
+        armPneumatic = new DoubleSolenoid(2, 3);
+        pinRelease = new DoubleSolenoid(4, 5);
+        releaseRamp  = new DoubleSolenoid(6, 7);
         
-        //ai = new AnalogInput(0);
+        ai = new AnalogInput(0);
     }
 }
         

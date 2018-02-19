@@ -15,7 +15,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class LiftingMachine extends Subsystem {
 
-	/*private final TalonSRX lift = RobotMap.raisingMotor;
+	private final TalonSRX lift = RobotMap.raisingMotor;
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 	
@@ -42,8 +42,16 @@ public class LiftingMachine extends Subsystem {
 	{
 		lift.set(ControlMode.PercentOutput, speed);
 	}
+	public double getCounts()
+	{
+		return lift.getSelectedSensorPosition(0);
+	}
+	public void resetZero()
+	{
+		lift.setSelectedSensorPosition(0,0, 0);
+	}
 
-	*/
+	
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());

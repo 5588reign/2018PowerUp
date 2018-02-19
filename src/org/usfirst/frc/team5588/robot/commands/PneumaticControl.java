@@ -6,6 +6,7 @@ import org.usfirst.frc.team5588.robot.RobotMap;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
@@ -13,16 +14,11 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class PneumaticControl extends Command {
 
-	@Override
-	protected boolean isFinished() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-	/*
 	//Value value = DoubleSolenoid.Value.kOff;
 	Compressor c;
 	DoubleSolenoid.Value reading;
 	int port = -1;
+	Timer time = new Timer();
 
     public PneumaticControl(int p) {
     	
@@ -40,25 +36,30 @@ public class PneumaticControl extends Command {
     	{
     		if(Robot.rampPneumaticValue)
     		{
-    			RobotMap.unrollRampPneumatic.set(DoubleSolenoid.Value.kForward);
+    			RobotMap.liftRampPneumatic.set(DoubleSolenoid.Value.kForward);
     		}
     		else
     		{
-    			RobotMap.unrollRampPneumatic.set(DoubleSolenoid.Value.kReverse);
+    			RobotMap.liftRampPneumatic.set(DoubleSolenoid.Value.kReverse);
     		}
     	}
     	else if(port == 2)
     	{
     		if(Robot.armPneumaticValue)
     		{
-    			RobotMap.liftRampPneumatic.set(DoubleSolenoid.Value.kForward);
+    			RobotMap.armPneumatic.set(DoubleSolenoid.Value.kForward);
     		}
     		else 
     		{
-    			RobotMap.liftRampPneumatic.set(DoubleSolenoid.Value.kReverse);
+    			RobotMap.armPneumatic.set(DoubleSolenoid.Value.kReverse);
     		}
     	}
-    	
+    	else if(port == 4)
+    	{
+    		RobotMap.pinRelease.set(DoubleSolenoid.Value.kReverse);
+    		Timer.delay(2);
+    		RobotMap.releaseRamp.set(DoubleSolenoid.Value.kForward);
+    	}
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -101,5 +102,5 @@ public class PneumaticControl extends Command {
     // subsystems is scheduled to run
     protected void interrupted() {
     	end();
-    }*/
+    }
 }

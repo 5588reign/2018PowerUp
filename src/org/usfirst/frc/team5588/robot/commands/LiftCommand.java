@@ -16,12 +16,7 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class LiftCommand extends Command {
 
-	@Override
-	protected boolean isFinished() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-	/*double leftTrigRead = 0;
+	double leftTrigRead = 0;
 	double rightTrigRead = 0;
 	int readPOV = -1;
 	int position = 0;
@@ -49,9 +44,8 @@ public class LiftCommand extends Command {
     	
     	leftTrigRead = Robot.oi.manipulatorJoystick.getRawAxis(2);
     	rightTrigRead = Robot.oi.manipulatorJoystick.getRawAxis(3);
-    	//position = RobotMap.sensor.getQuadraturePosition();
-    	System.out.println("Position is reading " + position);
-    	//Robot.lift.setPower(readfSpeed);
+    	
+    	Robot.lift.setPower(readfSpeed);
     	
     	//if(readfSpeed >= 0.2)
     	//{
@@ -102,5 +96,5 @@ public class LiftCommand extends Command {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    }*/
+    }
 }
