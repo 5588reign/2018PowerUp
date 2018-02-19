@@ -16,7 +16,7 @@ public class RightScaleFromCenter extends CommandGroup {
     	addSequential(new TurnByGyro(0.2, -90));
     	addSequential(new DriveForRotations(0.2, 60));
     	addSequential(new TurnByGyro(0.2, 90));
-    	addSequential(new UltrasonicCommand(0.2, 30));
+    	//addSequential(new UltrasonicCommand(0.2, 30));
     }
 }
 

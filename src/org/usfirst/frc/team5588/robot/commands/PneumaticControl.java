@@ -12,7 +12,13 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class PneumaticControl extends Command {
-	
+
+	@Override
+	protected boolean isFinished() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	/*
 	//Value value = DoubleSolenoid.Value.kOff;
 	Compressor c;
 	DoubleSolenoid.Value reading;
@@ -95,5 +101,5 @@ public class PneumaticControl extends Command {
     // subsystems is scheduled to run
     protected void interrupted() {
     	end();
-    }
+    }*/
 }

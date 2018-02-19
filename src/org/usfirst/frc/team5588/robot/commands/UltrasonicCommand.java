@@ -13,7 +13,13 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class UltrasonicCommand extends Command {
 
-	
+	@Override
+	protected boolean isFinished() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	/*
 	AnalogInput input = RobotMap.ai;
 	double distance = 100;
 	double prevDist = 100;
@@ -81,5 +87,5 @@ public class UltrasonicCommand extends Command {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    }
+    }*/
 }

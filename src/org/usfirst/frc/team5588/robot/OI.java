@@ -34,6 +34,7 @@ public class OI {
     public JoystickButton closeBox;
     public JoystickButton unrollRamp;
     public JoystickButton liftRamp;
+    public JoystickButton testTalon;
 
     public OI() {
         manipulatorJoystick = new XboxController(1);
@@ -46,15 +47,18 @@ public class OI {
         closeBox = new JoystickButton(manipulatorJoystick, 4);
         unrollRamp = new JoystickButton(manipulatorJoystick, 5);
         liftRamp = new JoystickButton(manipulatorJoystick, 6);
+        testTalon = new JoystickButton(driverJoystick, 2);
         
-        switchHeight.whenPressed(new LiftCommand());
+        //switchHeight.whenPressed(new LiftCommand());
         //scale4.whenPressed(new DriveForRotations(0.1, 10));
         //scale6.whenPressed(new DriveForRotations(0.1, 15));
-        backDown.whenPressed(new DriveForRotations(0.2, 4));
-        openCloseBox.whenPressed(new PneumaticControl(2));
+        //backDown.whenPressed(new DriveForRotations(0.2, 4));
+        //openCloseBox.whenPressed(new PneumaticControl(2));
         //closeBox.whenPressed(new PneumaticControl(DoubleSolenoid.Value.kReverse, 2));
         //unrollRamp.whenPressed(new PneumaticControl(DoubleSolenoid.Value.kForward, 0));
-        liftRamp.whenPressed(new PneumaticControl(0));
+        //liftRamp.whenPressed(new PneumaticControl(0));
+        
+        //testTalon.whileHeld(new LiftCommand());
        
         
         /*System.out.println("The POV is " + manipulatorJoystick.getPOV(0));

@@ -8,13 +8,13 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class RightScaleFromLeft extends CommandGroup {
 
     public RightScaleFromLeft() {
-        addSequential(new DriveForRotations(0.5, 246));
-        addSequential(new TurnByGyro(0.15, 90));
-        addSequential(new DriveForRotations(0.5, 274.31));
-        addSequential(new TurnByGyro(0.15, -90));
-        addSequential(new DriveForRotations(0.5, 77.69));
-        addSequential(new TurnByGyro(0.15, -90));
-        addSequential(new DriveForRotations(0.5, 51.57));
+        addSequential(new DriveForRotations(0.5, 211.75));
+        addSequential(new TurnByGyro(0.2, 90));
+        addSequential(new DriveForRotations(0.5, 240.31));
+        addSequential(new TurnByGyro(0.2, -91));
+        addSequential(new DriveForRotations(0.5, 64.69));
+        addSequential(new TurnByGyro(0.2, -91));
+        //addSequential(new DriveForRotations(0.5, 51.57));
         
     }
 }

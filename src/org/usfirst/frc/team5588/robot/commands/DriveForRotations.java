@@ -47,14 +47,10 @@ public class DriveForRotations extends Command {
     	leftDistanceTraveled = -1.0 * RobotMap.leftEncoder.getDistance();
     	rightDistanceTraveled = RobotMap.rightEncoder.getDistance();
     	
-    	//if(leftDistanceTraveled > rightDistanceTraveled)
-    		//correctingRight = -0.2;
     	
-    	//if(rightDistanceTraveled > leftDistanceTraveled)
-    		//correctingLeft = 0.2;
     	//change
     	if(leftDistanceTraveled - rightDistanceTraveled > 0.05)
-    		correctingRight = -0.15;
+    		correctingRight = -0.1;
     	//change
     	if(rightDistanceTraveled - leftDistanceTraveled > 0.05)
     		correctingLeft = 0.10;
@@ -62,8 +58,8 @@ public class DriveForRotations extends Command {
     	Drive.getInstance().setSpeed(this.leftSpeed + correctingLeft, this.rightSpeed + correctingRight); 
     	
     	//Use this to TEST if your encoder correcting is working properly
-    	//System.out.println("The right encoder is at " + rightDistanceTraveled);
-    	//System.out.println("The left encoder is at " + leftDistanceTraveled);
+    	System.out.println("The right encoder is at " + rightDistanceTraveled);
+    	System.out.println("The left encoder is at " + leftDistanceTraveled);
     	//System.out.println("The encoder counts is " + RobotMap.rightEncoder.get());
     }
 

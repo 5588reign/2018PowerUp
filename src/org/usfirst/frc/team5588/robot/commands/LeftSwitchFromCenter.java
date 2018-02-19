@@ -12,7 +12,7 @@ public class LeftSwitchFromCenter extends CommandGroup {
     	addSequential(new TurnByGyro(0.15, -90));
     	addSequential(new DriveForRotations(0.5, 22.25));
     	addSequential(new TurnByGyro(0.15, 90));
-    	addSequential(new UltrasonicCommand(0.2, 30));
+    	//addSequential(new UltrasonicCommand(0.2, 30));
     	//move up arm up to switch height
     	addSequential(new DriveForRotations(0.2, 30));
     	//pneumatics drop

@@ -8,24 +8,32 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
 public class LiftCommand extends Command {
-	
-	double leftTrigRead = 0;
+
+	@Override
+	protected boolean isFinished() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	/*double leftTrigRead = 0;
 	double rightTrigRead = 0;
 	int readPOV = -1;
 	int position = 0;
+	int input = 0;
 	
 
     public LiftCommand() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(LiftingMachine.getInstance());
-    	
+    	//requires(Robot.lift);
+    	//input = i;
     	
     }
 
@@ -37,12 +45,27 @@ public class LiftCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	double readfSpeed = -deadzone(Robot.oi.manipulatorJoystick.getRawAxis(1));
+    	
     	leftTrigRead = Robot.oi.manipulatorJoystick.getRawAxis(2);
     	rightTrigRead = Robot.oi.manipulatorJoystick.getRawAxis(3);
-    	readPOV = Robot.oi.manipulatorJoystick.getPOV(0);
-    	position = RobotMap.sensor.getQuadraturePosition();
+    	//position = RobotMap.sensor.getQuadraturePosition();
     	System.out.println("Position is reading " + position);
-    	RobotMap.raisingMotor.set(ControlMode.PercentOutput, .2);
+    	//Robot.lift.setPower(readfSpeed);
+    	
+    	//if(readfSpeed >= 0.2)
+    	//{
+    	//	Robot.lift.setPower(.4);
+    	//}
+    	//else if(readfSpeed <-.2)
+    	//{
+    	//	Robot.lift.setPower(-.4);
+    	//}
+    	//else if(input == 1)
+    	//{
+    	//	RobotMap.raisingMotor.set(ControlMode.PercentOutput, 0.4);
+    
+    	//}
     	
     	
     	if(leftTrigRead >= .9)
@@ -55,18 +78,17 @@ public class LiftCommand extends Command {
     		//DO STUFF (move the lift to 6 feet)
     		System.out.println("move the lift to 6 feet");
     	}
-    	if(readPOV >= 315 || readPOV <= 45)
-    	{
-    		//DO STUFF (moving up 6 inches with the talon srx motor)
-    		System.out.println("moving up 6 inches with the talon srx motor");
-    	}
-    	if(readPOV >= 135 && readPOV <= 225)
-    	{
-    		//DO STUFF (moving down 6 inches with the talon srx motor)
-    		System.out.println("moving down 6 inches with the talon srx motor");
-    	}
     	
     	
+    	
+    }
+    
+    private double deadzone(double in){
+    	if(Math.abs(in)<0.1)
+    		return 0.0;
+    	else if(Math.abs(in)>.8)
+    		return .8;
+    	return in;
     }
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
@@ -80,5 +102,5 @@ public class LiftCommand extends Command {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    }
+    }*/
 }

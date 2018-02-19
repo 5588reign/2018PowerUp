@@ -15,10 +15,20 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class LiftingMachine extends Subsystem {
 
-	private final TalonSRX lift = RobotMap.raisingMotor;
+	/*private final TalonSRX lift = RobotMap.raisingMotor;
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 	
+	private LiftingMachine(){
+		lift.getDeviceID();
+		lift.setInverted(true); 
+		//if it spins the wrong way change this to true 
+    	lift.setSensorPhase(false); 
+    	lift.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 0);
+    	lift.setSelectedSensorPosition(0, 0, 0);
+    	lift.setNeutralMode(NeutralMode.Brake);
+
+	}
 	
 	public void setControlMode(double distance)
 	{
@@ -30,19 +40,10 @@ public class LiftingMachine extends Subsystem {
 	}
 	public void setPower(double speed)
 	{
-		//lift.set(ControlMode.Position, speed);
+		lift.set(ControlMode.PercentOutput, speed);
 	}
 
-	private LiftingMachine(){
-		RobotMap.raisingMotor.getDeviceID();
-		RobotMap.raisingMotor.setInverted(true); 
-		//if it spins the wrong way change this to true 
-    	RobotMap.raisingMotor.setSensorPhase(false); 
-    	RobotMap.raisingMotor.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 0);
-    	RobotMap.raisingMotor.setSelectedSensorPosition(0, 0, 0);
-    	RobotMap.raisingMotor.setNeutralMode(NeutralMode.Brake);
-
-	}
+	*/
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
