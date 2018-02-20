@@ -41,38 +41,45 @@ public class LiftCommand extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	double readfSpeed = -deadzone(Robot.oi.manipulatorJoystick.getRawAxis(1));
+    	Robot.positionOfLiftMachine = -Robot.lift.getCounts();
+    	System.out.println("Position is reading " + Robot.positionOfLiftMachine);
     	
     	leftTrigRead = Robot.oi.manipulatorJoystick.getRawAxis(2);
     	rightTrigRead = Robot.oi.manipulatorJoystick.getRawAxis(3);
-    	
-    	Robot.lift.setPower(readfSpeed);
-    	
-    	//if(readfSpeed >= 0.2)
-    	//{
-    	//	Robot.lift.setPower(.4);
-    	//}
-    	//else if(readfSpeed <-.2)
-    	//{
-    	//	Robot.lift.setPower(-.4);
-    	//}
-    	//else if(input == 1)
-    	//{
-    	//	RobotMap.raisingMotor.set(ControlMode.PercentOutput, 0.4);
-    
-    	//}
-    	
-    	
     	if(leftTrigRead >= .9)
     	{
     		//DO STUFF (move the lift to 4 feet)
     		System.out.println("move the lift to 4 feet");
     	}
-    	if(rightTrigRead >= -.9)
+    	else if(rightTrigRead >= .9)
     	{
     		//DO STUFF (move the lift to 6 feet)
     		System.out.println("move the lift to 6 feet");
     	}
+    	/*else if(button to 5 lt and rt? necessary?)
+    	{
+    
+    	}*/
+    	else if(Robot.oi.manipulatorJoystick.getBButtonPressed())//button to switch 22.25 inches - button b)
+    	{
+    		Robot.lift.setControlMode(true, 2000);
+    	}
+    	else if(Robot.oi.manipulatorJoystick.getAButtonPressed()) //button to ground
+    	{
+    		Robot.lift.setControlMode(true, 0);
+    		System.out.println("a is pressed");
+    	}
+    	else 
+    	{
+    		Robot.lift.setControlMode(false, readfSpeed);
+    	}
     	
+    	
+
+    	if(Robot.oi.manipulatorJoystick.getStartButtonPressed())
+    	{
+    		Robot.lift.resetZero();
+    	}
     	
     	
     }
@@ -80,8 +87,10 @@ public class LiftCommand extends Command {
     private double deadzone(double in){
     	if(Math.abs(in)<0.1)
     		return 0.0;
-    	else if(Math.abs(in)>.8)
+    	else if(in > .8)
     		return .8;
+    	else if(in < -.8)
+    		return -.8;
     	return in;
     }
     // Make this return true when this Command no longer needs to run execute()

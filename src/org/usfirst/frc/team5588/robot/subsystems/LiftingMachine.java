@@ -3,11 +3,13 @@ package org.usfirst.frc.team5588.robot.subsystems;
 import org.usfirst.frc.team5588.robot.RobotMap;
 import org.usfirst.frc.team5588.robot.commands.LiftCommand;
 
+import com.ctre.phoenix.ParamEnum;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
@@ -16,6 +18,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class LiftingMachine extends Subsystem {
 
 	private final TalonSRX lift = RobotMap.raisingMotor;
+	
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 	
@@ -27,21 +30,29 @@ public class LiftingMachine extends Subsystem {
     	lift.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 0);
     	lift.setSelectedSensorPosition(0, 0, 0);
     	lift.setNeutralMode(NeutralMode.Brake);
-
+    	lift.selectProfileSlot(0, 0);
+    	lift.config_kF(0, 0.2481, 0);
+    	lift.configSetParameter(ParamEnum.eClearPositionOnQuadIdx, 1, 0x00, 0x00, 10);
+    	lift.configSetParameter(ParamEnum.eClearPositionOnLimitF, 1, 0x00, 0x00, 10);
+    	lift.configSetParameter(ParamEnum.eClearPositionOnLimitR, 1, 0x00, 0x00, 10);
+    	lift.configMotionCruiseVelocity(3092, 0);
+    	lift.configMotionAcceleration(3092, 0);
 	}
 	
-	public void setControlMode(double distance)
+	
+	public void setControlMode(boolean mode, double speed) //true is motionMagic, false is PercentOutput
 	{
-		//lift.set(ControlMode.Position, lift.getDeviceID());
+		if(mode)
+		{
+			lift.set(ControlMode.MotionMagic, speed);
+		}
+		else
+		{
+			lift.set(ControlMode.PercentOutput, speed);
+		}
 	}
-	public void setInverted()
-	{
-		//lift.setInverted(true);
-	}
-	public void setPower(double speed)
-	{
-		lift.set(ControlMode.PercentOutput, speed);
-	}
+	
+	
 	public double getCounts()
 	{
 		return lift.getSelectedSensorPosition(0);

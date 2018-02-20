@@ -9,7 +9,12 @@ public class Baseline extends CommandGroup {
 
     public Baseline() {
     	addSequential(new DriveForRotations(.5, 168)); //Should be 168 for distance
-    	
+    	//testing for fudge factor & breaking distance (change speed for calculations needed):
+    	//addSequential(new DriveForRotations(.3, 12));
+    	//addSequential(new DriveForRotations(.3, 60));
+    	//addSequential(new DriveForRotations(.3, 120));
+    	//addSequential(new DriveForRotations(.3, 180));
+    	//addSequential(new DriveForRotations(.3, 240));
     }
 }
 

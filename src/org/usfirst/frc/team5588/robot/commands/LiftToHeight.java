@@ -38,7 +38,7 @@ public class LiftToHeight extends Command {
     protected void execute() {
     	Robot.positionOfLiftMachine = -Robot.lift.getCounts();
     	System.out.println("Position is reading " + Robot.positionOfLiftMachine);
-    	Robot.lift.setPower(speed);
+    	Robot.lift.setControlMode(false, speed);
     	
     	
     }

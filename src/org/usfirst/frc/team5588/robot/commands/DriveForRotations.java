@@ -25,7 +25,10 @@ public class DriveForRotations extends Command {
         this.distance = distance;
         // distance per pulse = PI * wheel diameter in inches / pulse per revolution * fudge factor;
         //change this
+        //for zelda's fudge factor:
         final double distancePerPulse = (Math.PI * 5.90625)/ 256 * 1;  //converts pulses to inches
+        //for peach's fudge factor:
+        //final double distancePerPulse = (Math.PI * 5.90625)/ 256 * .984;
     	RobotMap.rightEncoder.setDistancePerPulse(distancePerPulse);
     	RobotMap.leftEncoder.setDistancePerPulse(distancePerPulse);
         // Use requires() here to declare subsystem dependencies
@@ -46,14 +49,20 @@ public class DriveForRotations extends Command {
     	
     	leftDistanceTraveled = -1.0 * RobotMap.leftEncoder.getDistance();
     	rightDistanceTraveled = RobotMap.rightEncoder.getDistance();
+    	//for peach's right distance:
+    	//rightDistanceTraveled = -1.0 * RobotMap.rightEncoder.getDistance();
     	
     	
     	//change
     	if(leftDistanceTraveled - rightDistanceTraveled > 0.05)
-    		correctingRight = -0.1;
+    		correctingRight = -0.10;
+    		//peach's correcting right:
+    		//correctingRight = -.23;
     	//change
     	if(rightDistanceTraveled - leftDistanceTraveled > 0.05)
     		correctingLeft = 0.10;
+    		//peach's correcting left: 
+    		//correctingLeft = .01;
     	
     	Drive.getInstance().setSpeed(this.leftSpeed + correctingLeft, this.rightSpeed + correctingRight); 
     	
