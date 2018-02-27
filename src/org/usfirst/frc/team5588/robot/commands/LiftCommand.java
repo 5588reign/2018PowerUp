@@ -42,8 +42,11 @@ public class LiftCommand extends Command {
     protected void execute() {
     	double readfSpeed = -deadzone(Robot.oi.manipulatorJoystick.getRawAxis(1));
     	Robot.positionOfLiftMachine = -Robot.lift.getCounts();
-    	System.out.println("Position is reading " + Robot.positionOfLiftMachine);
-    	
+    	Robot.lift.set(ControlMode.PercentOutput, readfSpeed);
+    	//System.out.println("Position is reading " + Robot.positionOfLiftMachine);
+    	//Robot.lift.printRiseToRise();
+    	//System.out.println(Robot.lift.getCounts());
+    	/*
     	leftTrigRead = Robot.oi.manipulatorJoystick.getRawAxis(2);
     	rightTrigRead = Robot.oi.manipulatorJoystick.getRawAxis(3);
     	if(leftTrigRead >= .9)
@@ -59,28 +62,27 @@ public class LiftCommand extends Command {
     	/*else if(button to 5 lt and rt? necessary?)
     	{
     
-    	}*/
+    	}
     	else if(Robot.oi.manipulatorJoystick.getBButtonPressed())//button to switch 22.25 inches - button b)
     	{
-    		Robot.lift.setControlMode(true, 2000);
+    		Robot.lift.setControlMode(true, 10000);
     	}
     	else if(Robot.oi.manipulatorJoystick.getAButtonPressed()) //button to ground
     	{
-    		Robot.lift.setControlMode(true, 0);
-    		System.out.println("a is pressed");
+    		//Robot.lift.setControlMode(true, 0);
+    		//System.out.println("a is pressed");
     	}
-    	else 
-    	{
-    		Robot.lift.setControlMode(false, readfSpeed);
-    	}
+    	
+    		
+    	
     	
     	
 
     	if(Robot.oi.manipulatorJoystick.getStartButtonPressed())
     	{
-    		Robot.lift.resetZero();
+    		//Robot.lift.resetZero();
     	}
-    	
+    	*/
     	
     }
     

@@ -60,7 +60,7 @@ public class DriveForRotations extends Command {
     		//correctingRight = -.23;
     	//change
     	if(rightDistanceTraveled - leftDistanceTraveled > 0.05)
-    		correctingLeft = 0.10;
+    		correctingLeft = 0.05;
     		//peach's correcting left: 
     		//correctingLeft = .01;
     	

@@ -47,7 +47,7 @@ public class Robot extends IterativeRobot {
 	
 	public static boolean armPneumaticValue = true;
 	public static boolean rampPneumaticValue = false; 
-	public static double positionOfLiftMachine = 0;
+	public static double positionOfLiftMachine = -1;
 
 	int session;
     Image frame;
@@ -69,7 +69,7 @@ public class Robot extends IterativeRobot {
 		oi = new OI();
 		gyro = Gyroscope.getInstance();
 		lift = LiftingMachine.getInstance();
-		positionOfLiftMachine = -lift.getCounts();
+		//positionOfLiftMachine = -lift.getCounts();
 		RobotMap.gyro.calibrate();
 		
 		chooser = new SendableChooser<CommandGroup>();
@@ -88,11 +88,11 @@ public class Robot extends IterativeRobot {
 		
 		server = CameraServer.getInstance();   
         
-        targetcam = server.startAutomaticCapture(0); 
+        /*targetcam = server.startAutomaticCapture(0); 
         targetcam.setBrightness(1);
         
         targetcam2 = server.startAutomaticCapture(1);
-        targetcam2.setBrightness(1);
+        targetcam2.setBrightness(1);*/
 	}
 
 	/**

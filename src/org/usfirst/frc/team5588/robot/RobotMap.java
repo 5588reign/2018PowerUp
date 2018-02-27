@@ -43,25 +43,27 @@ public class RobotMap {
     public static DoubleSolenoid pinRelease;
     public static DoubleSolenoid releaseRamp;
     public static AnalogInput ai;
-    public static SensorCollection sensor;
+    //public static SensorCollection sensor;
     
     //public static final int CAMERA_FORWARDS = 1;
 
     public static void init() {
         
-        driveLeftDrive = new VictorSP(2);
-        driveRightDrive = new VictorSP(0);
+        driveRightDrive = new VictorSP(2);
+        driveLeftDrive = new VictorSP(0);
+        
         /*peach
         driveLeftDrive = new Talon(2);
         driveRightDrive = new Talon(0);*/
          
         
-        leftEncoder = new Encoder(2, 3);
+        //leftEncoder = new Encoder(2, 3);
+        //rightEncoder = new Encoder(0,1);
+        
+        //peach and zelda
         rightEncoder = new Encoder(0,1);
-        /*peach
-         * leftEncoder = new Encoder(0,1);
-         * rightEncoder = new Encoder(2,3);
-         */
+        leftEncoder = new Encoder(2,3);
+         
         
         gyro = new ADXRS450_Gyro();
         

@@ -8,13 +8,21 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class RightSwitchFromLeft extends CommandGroup {
 
     public RightSwitchFromLeft() {
-    	addSequential(new DriveForRotations(1, 211.75));
+    	/*addSequential(new DriveForRotations(1, 211.75));
     	addSequential(new TurnByGyro(0.2, 91));
     	addSequential(new DriveForRotations(1, 219.06));
     	addSequential(new TurnByGyro(0.2, 91));
     	addSequential(new DriveForRotations(1, 74));
     	addSequential(new TurnByGyro(0.2, 91));
-    	addSequential(new DriveForRotations(1, 8)); //fix num
+    	addSequential(new DriveForRotations(1, 8)); //fix num*/
+    	
+    	addSequential(new DriveForRotations(0.3, 4)); //change if it goes too far or too little
+    	addSequential(new TurnByGyro(0.2, 90));
+    	addSequential(new DriveForRotations(0.3, 258.56));
+    	addSequential(new TurnByGyro(0.2, -90));
+    	addSequential(new DriveForRotations(.3, 90.25));
+    	addSequential(new TurnByGyro(0.2, -90));
+    	addSequential(new DriveForRotations(.3, 4)); //fix num
     	
     	
         

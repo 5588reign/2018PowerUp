@@ -13,10 +13,10 @@ public class TurnByGyro extends Command
 {
 	
 	private double readAngle;
-	private double lspeed;
-	private double rspeed;
+	private double lspeed = 0;
+	private double rspeed = 0;
 	private double endingAngle;
-	private double speed; // Used for deadzone calculation and isFinished method
+	private double speed = 0; // Used for deadzone calculation and isFinished method
 	Gyroscope gyro = Gyroscope.getInstance();
 	
     public TurnByGyro(double oneSpeed, double angle) {
@@ -25,6 +25,7 @@ public class TurnByGyro extends Command
     	requires(Gyroscope.getInstance());
     	requires(Drive.getInstance());
    
+    	gyro.reset();
     	speed = oneSpeed;
     	//If you want to go left enter a negative angle value
     	if(angle < 0)
@@ -73,13 +74,27 @@ public class TurnByGyro extends Command
     	{
     		diff = 1;
     	}
-        return(Math.abs(endingAngle - readAngle) < diff);
-        
+    	else if(speed == .5)
+    	{
+    		diff = 5;  //can stop at 1.5, changing this to larger number for accuracy of second catch
+    	}
+    	boolean done = Math.abs(endingAngle - readAngle) < diff;
+    	if(speed == .5 && done == true)
+    	{
+    		speed = .2;
+    		lspeed = .2;
+    		rspeed = .2;
+    	}
+    	else
+    	{
+    		return done;
+    	}
+        return false;
     }
-
     // Called once after isFinished returns true
     protected void end() {
     	Drive.getInstance().stop();
+    	
     }
 
     // Called when another command which requires one or more of the same

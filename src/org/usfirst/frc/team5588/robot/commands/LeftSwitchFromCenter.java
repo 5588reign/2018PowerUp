@@ -8,14 +8,20 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class LeftSwitchFromCenter extends CommandGroup {
 
     public LeftSwitchFromCenter() {
-    	addSequential(new DriveForRotations(0.5, 43.75));
+    	addSequential(new DriveForRotations(0.3, 10));
+    	addSequential(new TurnByGyro(.2, -71.4614));
+    	addSequential(new DriveForRotations(0.3, 184.424));
+    	addSequential(new TurnByGyro(.2, 71.4614));
+    	addSequential(new DriveForRotations(0.3, 48));
+    	/*addSequential(new DriveForRotations(0.5, 43.75));
     	addSequential(new TurnByGyro(0.15, -90));
     	addSequential(new DriveForRotations(0.5, 22.25));
-    	addSequential(new TurnByGyro(0.15, 90));
-    	//addSequential(new UltrasonicCommand(0.2, 30));
+    	addSequential(new TurnByGyro(0.15, 90));*/
+    	
     	//move up arm up to switch height
     	addSequential(new DriveForRotations(0.2, 30));
     	//pneumatics drop
+    	
     	
     }
 }

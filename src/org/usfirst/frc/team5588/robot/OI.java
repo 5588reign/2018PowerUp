@@ -32,7 +32,6 @@ public class OI {
     public Trigger scale6;
     public JoystickButton backDown;
     public JoystickButton openCloseBox;
-    public JoystickButton closeBox;
     public JoystickButton unrollRamp;
     public JoystickButton liftRamp;
     public JoystickButton testTalon;
@@ -45,40 +44,27 @@ public class OI {
         //scale6 = new Trigger(manipulatorJoystick, 12);
         backDown = new JoystickButton(manipulatorJoystick, 1);
         openCloseBox = new JoystickButton(manipulatorJoystick, 3);
-        closeBox = new JoystickButton(manipulatorJoystick, 4);
+        //closeBox = new JoystickButton(manipulatorJoystick, 4);
         unrollRamp = new JoystickButton(manipulatorJoystick, 5);
         liftRamp = new JoystickButton(manipulatorJoystick, 6);
         testTalon = new JoystickButton(driverJoystick, 2);
         
-        switchHeight.whenPressed(new LiftToHeight(0));
+        //switchHeight.whenPressed(new LiftToHeight(400));
         //scale4.whenPressed(new DriveForRotations(0.1, 10));
         //scale6.whenPressed(new DriveForRotations(0.1, 15));
         //backDown.whenPressed(new DriveForRotations(0.2, 4));
         openCloseBox.whenPressed(new PneumaticControl(2));
-    
+        unrollRamp.whenPressed(new PneumaticControl(4));
         liftRamp.whenPressed(new PneumaticControl(0));
         //01 - ramp
         //23 - arms 
         //45 - pin 
         //67 - release ramp 
         
-        //testTalon.whileHeld(new LiftCommand());
+        testTalon.whileHeld(new LiftCommand());
        
         
-        /*System.out.println("The POV is " + manipulatorJoystick.getPOV(0));
-        
-        if(manipulatorJoystick.getPOV(0)>= 135 && manipulatorJoystick.getPOV(0) <=225)
-        {
-        	Scheduler.getInstance().add(new DriveForRotations(-0.1, 4));
-        } 
-        if(manipulatorJoystick.getPOV(0)>= 315 || manipulatorJoystick.getPOV(0) <=45)
-        {
-        	Scheduler.getInstance().add(new DriveForRotations(-0.1, 4));
-        } 
-        if(manipulatorJoystick.getTriggerAxis(Hand.kLeft)>.1)
-        {
-        	//move up 6
-        }*/
+       
         
         
     } 

@@ -28,15 +28,26 @@ public class LiftingMachine extends Subsystem {
 		//if it spins the wrong way change this to true 
     	lift.setSensorPhase(false); 
     	lift.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 0);
-    	lift.setSelectedSensorPosition(0, 0, 0);
+    	
+    	
+    	
+    	//lift.setSelectedSensorPosition(0, 0, 0);
+    
     	lift.setNeutralMode(NeutralMode.Brake);
     	lift.selectProfileSlot(0, 0);
-    	lift.config_kF(0, 0.2481, 0);
-    	lift.configSetParameter(ParamEnum.eClearPositionOnQuadIdx, 1, 0x00, 0x00, 10);
+    	
+    	//lift.config_kP(0, 3, 0);
+    	//lift.config_kI(0, 0.02, 0);
+    	//lift.config_kD(0, 30, 0);
+    	//lift.config_kF(0, .2481, 0);
+    	//lift.config_IntegralZone(0, 50, 0);
+    	
+    	
+    	/*lift.configSetParameter(ParamEnum.eClearPositionOnQuadIdx, 1, 0x00, 0x00, 10);
     	lift.configSetParameter(ParamEnum.eClearPositionOnLimitF, 1, 0x00, 0x00, 10);
     	lift.configSetParameter(ParamEnum.eClearPositionOnLimitR, 1, 0x00, 0x00, 10);
     	lift.configMotionCruiseVelocity(3092, 0);
-    	lift.configMotionAcceleration(3092, 0);
+    	lift.configMotionAcceleration(3092, 0);*/
 	}
 	
 	
@@ -44,7 +55,7 @@ public class LiftingMachine extends Subsystem {
 	{
 		if(mode)
 		{
-			lift.set(ControlMode.MotionMagic, speed);
+			//lift.set(ControlMode.MotionMagic, speed);
 		}
 		else
 		{
@@ -56,13 +67,22 @@ public class LiftingMachine extends Subsystem {
 	public double getCounts()
 	{
 		return lift.getSelectedSensorPosition(0);
+		//return lift.getSensorCollection().getQuadraturePosition();
 	}
 	public void resetZero()
 	{
-		lift.setSelectedSensorPosition(0,0, 0);
+		//lift.setSelectedSensorPosition(0,0, 0);
 	}
 
+	public void set(ControlMode m, double speed)
+	{
+		lift.set(ControlMode.PercentOutput, speed);
+	}
 	
+	public void printRiseToRise()
+	{
+		System.out.println("Rise to rise: " + lift.getSensorCollection().getPulseWidthRiseToRiseUs());
+	}
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());

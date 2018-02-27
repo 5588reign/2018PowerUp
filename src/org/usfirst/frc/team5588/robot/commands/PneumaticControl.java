@@ -57,8 +57,11 @@ public class PneumaticControl extends Command {
     	else if(port == 4)
     	{
     		RobotMap.pinRelease.set(DoubleSolenoid.Value.kReverse);
+    		Timer.delay(1);
+    		RobotMap.releaseRamp.set(DoubleSolenoid.Value.kReverse);
     		Timer.delay(2);
     		RobotMap.releaseRamp.set(DoubleSolenoid.Value.kForward);
+    		RobotMap.pinRelease.set(DoubleSolenoid.Value.kForward);
     	}
     }
 
