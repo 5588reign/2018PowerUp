@@ -29,9 +29,16 @@ public class DriveCommand extends Command {
     	double readfSpeed = deadzone(Robot.oi.driverJoystick.getRawAxis(0));
     	//if the joystick is moving backwards, then the read needs to be squared and * by -1
     	if(readfSpeed >= 0)
+    	{
     		fSpeed = readfSpeed * readfSpeed;
+    	}
     	else
     		fSpeed = -1 * (readfSpeed * readfSpeed);
+    	
+    	/*if(Robot.oi.driverJoystick.getRawButton(1))
+    	{
+    		fSpeed = readfSpeed*readfSpeed*readfSpeed;
+    	}*/
     	
     	double sSpeed = -deadzone(Robot.oi.driverJoystick.getRawAxis(1));
     	double lSpeed = (fSpeed + sSpeed);

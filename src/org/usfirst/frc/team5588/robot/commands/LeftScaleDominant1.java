@@ -1,22 +1,42 @@
 package org.usfirst.frc.team5588.robot.commands;
 
+import org.usfirst.frc.team5588.robot.Robot;
+
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
  *
  */
-public class RightSwitchFromRight extends CommandGroup {
-
-    public RightSwitchFromRight() {
-    	addSequential(new DriveForRotations(0.3,148));
-    	addSequential(new TurnByGyro(0.2, -90));
-    	addSequential(new LiftByTime(2));
-    	addSequential(new DriveForRotationsTimeLimit(.2, 3));
-    	addSequential(new ArmAutoOpen());
+public class LeftScaleDominant1 extends CommandGroup {
+	
+	
+	
+    public LeftScaleDominant1() {
+    	
+    }
+    @Override
+    protected void initialize()
+    {
+    	String gameData = Robot.getGameString();
+    	if(!gameData.equals("") && gameData.charAt(1) == 'L')
+    	{
+    		new LeftScaleFromLeft().start();
+    		
+    	}
+    	else if(!gameData.equals("") && gameData.charAt(0) == 'L')
+    	{
+    		new LeftSwitchFromLeft().start();
+    		
+    	}
+    	else
+    	{
+    		new Baseline().start();
+    	
+    	}
     }
 }
 
-//Add Commands in public RightSwitchFromRight():
+//Add Commands in public Left1():
 // e.g. addSequential(new Command1());
 //      addSequential(new Command2());
 // these will run in order.

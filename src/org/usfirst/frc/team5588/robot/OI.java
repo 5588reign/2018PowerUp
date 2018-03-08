@@ -45,7 +45,7 @@ public class OI {
         backDown = new JoystickButton(manipulatorJoystick, 1);
         openCloseBox = new JoystickButton(manipulatorJoystick, 3);
         //closeBox = new JoystickButton(manipulatorJoystick, 4);
-        unrollRamp = new JoystickButton(manipulatorJoystick, 5);
+        unrollRamp = new JoystickButton(manipulatorJoystick, 8);
         liftRamp = new JoystickButton(manipulatorJoystick, 6);
         testTalon = new JoystickButton(driverJoystick, 2);
         
@@ -54,7 +54,10 @@ public class OI {
         //scale6.whenPressed(new DriveForRotations(0.1, 15));
         //backDown.whenPressed(new DriveForRotations(0.2, 4));
         openCloseBox.whenPressed(new PneumaticControl(2));
+        //if(driverJoystick.getRawButton(5))
+        //{
         unrollRamp.whenPressed(new PneumaticControl(4));
+    	//}
         liftRamp.whenPressed(new PneumaticControl(0));
         //01 - ramp
         //23 - arms 

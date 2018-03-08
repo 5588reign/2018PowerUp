@@ -8,9 +8,9 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class Baseline extends CommandGroup {
 
     public Baseline() {
-    	//addSequential(new DriveForRotations(.5, 168)); //Should be 168 for distance
-    	addSequential(new TurnByGyro(0.5, 90));
-    	addSequential(new TurnByGyro(.2, 90));
+    	addSequential(new DriveForRotations(.3, 168)); //Should be 168 for distance
+    	//addSequential(new TurnByGyro(0.5, 90));
+    	//addSequential(new TurnByGyro(.2, 90));
     	//testing for fudge factor & breaking distance (change speed for calculations needed):
     	//addSequential(new DriveForRotations(.3, 12));
     	//addSequential(new DriveForRotations(.3, 60));
@@ -19,7 +19,8 @@ public class Baseline extends CommandGroup {
     	//addSequential(new DriveForRotations(.3, 240));
     	
     	//addSequential(new LiftByTime(2));
-    	//addSequential(new PneumaticControl(2));
+    	//addSequential(new DriveForRotationsTimeLimit(-.1, 20, 15));
+    	//addSequential(new ArmAutoOpen());
     	
     }
 }

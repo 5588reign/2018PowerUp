@@ -25,7 +25,7 @@ public class TurnByGyro extends Command
     	requires(Gyroscope.getInstance());
     	requires(Drive.getInstance());
    
-    	gyro.reset();
+    
     	speed = oneSpeed;
     	//If you want to go left enter a negative angle value
     	if(angle < 0)
@@ -79,17 +79,25 @@ public class TurnByGyro extends Command
     		diff = 5;  //can stop at 1.5, changing this to larger number for accuracy of second catch
     	}
     	boolean done = Math.abs(endingAngle - readAngle) < diff;
-    	if(speed == .5 && done == true)
+    	return done;
+    	/*if(speed == .5 && done == true)
     	{
     		speed = .2;
     		lspeed = .2;
     		rspeed = .2;
     	}
+    	else if(speed ==.2 && done == true)
+    	{
+    		speed = .5;
+    		lspeed = .5;
+    		rspeed = .5;
+    		return true;
+    	}
     	else
     	{
     		return done;
-    	}
-        return false;
+    	}*/
+        
     }
     // Called once after isFinished returns true
     protected void end() {

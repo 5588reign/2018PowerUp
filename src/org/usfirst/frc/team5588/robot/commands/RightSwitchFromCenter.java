@@ -9,11 +9,13 @@ public class RightSwitchFromCenter extends CommandGroup {
 
     public RightSwitchFromCenter() {
     	
-    	addSequential(new DriveForRotations(0.3, 10));
+    	addSequential(new DriveForRotations(0.35, 10));
     	addSequential(new TurnByGyro(0.2, 74.4023));
-    	addSequential(new DriveForRotations(0.3, 224.587));
+    	addSequential(new DriveForRotations(0.35, 48));
     	addSequential(new TurnByGyro(0.2, -74.4023));
-    	addSequential(new DriveForRotations(.2, 48));
+    	addSequential(new LiftByTime(2));
+    	addSequential(new DriveForRotations(.3, 67));
+    	addSequential(new ArmAutoOpen());
     	/*addSequential(new DriveForRotations(0.5, 43.75));
     	addSequential(new TurnByGyro(0.15, 90));
     	addSequential(new DriveForRotations(0.5, 46.25));

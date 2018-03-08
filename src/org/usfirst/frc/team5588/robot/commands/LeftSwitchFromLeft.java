@@ -8,12 +8,11 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class LeftSwitchFromLeft extends CommandGroup {
 
     public LeftSwitchFromLeft() {
-    	addSequential(new DriveForRotations(0.5,133.75));
+    	addSequential(new DriveForRotations(0.35,142));
     	addSequential(new TurnByGyro(0.2, 90));
-    	//driving to the switch fast at first, then slows down as it nears impact in order to avoid accidental
-    	//dislodge of cube
-    	addSequential(new DriveForRotations(0.5, 15));
-    	addSequential(new DriveForRotations(0.1, 6));
+    	addSequential(new LiftByTime(2));
+    	addSequential(new DriveForRotationsTimeLimit(.2, 3));
+    	addSequential(new ArmAutoOpen());
     }
 }
 

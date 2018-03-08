@@ -14,11 +14,15 @@ import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.CommandGroup;
+import edu.wpi.first.wpilibj.command.InstantCommand;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import java.awt.Image;
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
+import java.time.temporal.TemporalUnit;
 
 import org.usfirst.frc.team5588.robot.subsystems.*;
 import org.usfirst.frc.team5588.robot.commands.*;
@@ -35,7 +39,7 @@ import org.usfirst.frc.team5588.robot.commands.*;
 public class Robot extends IterativeRobot {
     
 
-	public static String gamedata = DriverStation.getInstance().getGameSpecificMessage();
+	public static String gamedata = "";
 	
 	Command autonomousCommand;
 
@@ -43,7 +47,10 @@ public class Robot extends IterativeRobot {
 	public static Drive drive;
 	public static Gyroscope gyro;
 	public static LiftingMachine lift;
-	SendableChooser<CommandGroup> chooser = new SendableChooser<>();
+	public static CubeCollector cubeyCollector;
+	public static Climber climber;
+	SendableChooser<Command> chooser = new SendableChooser<>();
+	SendableChooser<Command> fmsfallback = new SendableChooser<>();
 	
 	public static boolean armPneumaticValue = true;
 	public static boolean rampPneumaticValue = false; 
@@ -53,7 +60,7 @@ public class Robot extends IterativeRobot {
     Image frame;
     CameraServer server;
     static UsbCamera targetcam;
-    UsbCamera targetcam2;
+    static UsbCamera targetcam2;
     int imaqError;
     
 	/**
@@ -69,30 +76,44 @@ public class Robot extends IterativeRobot {
 		oi = new OI();
 		gyro = Gyroscope.getInstance();
 		lift = LiftingMachine.getInstance();
+		cubeyCollector = CubeCollector.getInstance();
+		climber = Climber.getInstance();
 		//positionOfLiftMachine = -lift.getCounts();
 		RobotMap.gyro.calibrate();
 		
-		chooser = new SendableChooser<CommandGroup>();
+			
 		chooser.addDefault("Baseline", new Baseline());
-		chooser.addDefault("Test right switch from left", new RightSwitchFromLeft());
-		chooser.addObject("Scale1", new Scale1());
-		chooser.addObject("Scale2", new Scale2());
-		chooser.addObject("Scale3", new Scale3());
+		/*chooser.addDefault("Test left switch from center", new LeftSwitchFromCenter());
+		chooser.addDefault("Test right switch from center", new RightSwitchFromCenter());
+		chooser.addDefault("Test right switch from right", new RightSwitchFromRight());
+		chooser.addDefault("test left sw from left", new LeftSwitchFromLeft());
+		chooser.addDefault("Test left from left", new LeftSwitchFromLeft());*/
+		//chooser.addObject("Scale1", new Scale1());
+		//chooser.addObject("Scale2", new Scale2());
+		//chooser.addObject("Scale3", new Scale3());
 		chooser.addObject("Switch1", new Switch1());
 		chooser.addObject("Switch2", new Switch2());
 		chooser.addObject("Switch3", new Switch3());
-		chooser.addObject("Left1", new Left1());
-		chooser.addObject("Right3", new Right3());
+		//chooser.addObject("Left1", new Left1());
+		//chooser.addObject("Right3", new Right3());
+		
+		fmsfallback.addDefault("do nothing", new InstantCommand(){});
+		fmsfallback.addObject("baseline", new Baseline());
+		fmsfallback.addObject("left switch no drop", new GoLeftSwitchNoDrop());
+		
 		//chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", chooser);
+		SmartDashboard.putData("fallback", fmsfallback);
 		
 		server = CameraServer.getInstance();   
         
-        /*targetcam = server.startAutomaticCapture(0); 
+        targetcam = server.startAutomaticCapture(0); 
         targetcam.setBrightness(1);
+       
         
+        //currently camera not working
         targetcam2 = server.startAutomaticCapture(1);
-        targetcam2.setBrightness(1);*/
+        targetcam2.setBrightness(1);
 	}
 
 	/**
@@ -123,14 +144,24 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void autonomousInit() {
-		System.out.println("the fms says" + gamedata);
+		Instant startTime = Instant.now();
+		boolean FMSfailure = false;
+		DriverStation.reportWarning("fms reads before " + gamedata, false);
+		while(gamedata.equals(""))
+		{
+			if(startTime.until(Instant.now(), ChronoUnit.SECONDS) >=5)
+			{
+				DriverStation.reportError("did not receive game data from fms", false);
+				FMSfailure = true;
+				break;
+			}
+			gamedata = DriverStation.getInstance().getGameSpecificMessage();
+		}
+		DriverStation.reportWarning("fms reads after " + gamedata, false);
+		
+		
 		
 		autonomousCommand = (Command)chooser.getSelected();
-		
-		if(gamedata == null)
-		{
-			autonomousCommand = new Baseline();
-		}
 
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector",
@@ -146,7 +177,19 @@ public class Robot extends IterativeRobot {
     	
 		// schedule the autonomous command (example)
 		if (autonomousCommand != null) {
-			autonomousCommand.start();
+			if(FMSfailure && (autonomousCommand instanceof Baseline))
+			{
+				autonomousCommand.start();
+			}
+			else if(!FMSfailure)
+			{
+				autonomousCommand.start();
+			}
+			else 
+			{
+				DriverStation.reportError("unable to run selected auto due to fms failure. using fallback", false);
+				((Command)fmsfallback.getSelected()).start();;
+			}
 		}
 	}
 
@@ -179,9 +222,7 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void teleopPeriodic() {
-		Scheduler.getInstance().run();
-		
-		
+		Scheduler.getInstance().run();	
 		
 	}
 

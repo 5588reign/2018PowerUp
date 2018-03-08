@@ -8,20 +8,29 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
  *
  */
 public class Switch2 extends CommandGroup {
-	/*Robot robot = Robot.getInstance();
-	String gameData = robot.getGameString();
+	
     public Switch2() {
     	
-    	if(gameData.charAt(0) == 'L')
+    	
+       
+    }
+    @Override
+    protected void initialize()
+    {
+    	String gameData = Robot.getGameString();
+    	if(!gameData.equals("") && gameData.substring(0,1).equalsIgnoreCase("L"))
     	{
-    		addSequential(new LeftSwitchFromCenter());
+    		new LeftSwitchFromCenter().start();
+    	}
+    	else if(!gameData.equals("") && gameData.substring(0,1).equalsIgnoreCase("R"))
+    	{
+    		new RightSwitchFromCenter().start();
     	}
     	else
     	{
-    		addSequential(new RightSwitchFromCenter());
+    		new GoLeftSwitchNoDrop().start();
     	}
-        
-    }*/
+    }
 }
 
 //Add Commands in public Switch2():

@@ -10,6 +10,7 @@ package org.usfirst.frc.team5588.robot;
 import com.ctre.phoenix.motorcontrol.SensorCollection;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.AnalogGyro;
@@ -43,18 +44,21 @@ public class RobotMap {
     public static DoubleSolenoid pinRelease;
     public static DoubleSolenoid releaseRamp;
     public static AnalogInput ai;
+    public static WPI_VictorSPX armLeft;
+    public static WPI_VictorSPX armRight;
+    public static WPI_VictorSPX climbMotor;
     //public static SensorCollection sensor;
     
     //public static final int CAMERA_FORWARDS = 1;
 
     public static void init() {
         
-        driveRightDrive = new VictorSP(2);
-        driveLeftDrive = new VictorSP(0);
+        driveLeftDrive = new VictorSP(2);
+        driveRightDrive = new VictorSP(0);
         
-        /*peach
-        driveLeftDrive = new Talon(2);
-        driveRightDrive = new Talon(0);*/
+        //peach
+        //driveLeftDrive = new Talon(2);
+        //driveRightDrive = new Talon(0);
          
         
         //leftEncoder = new Encoder(2, 3);
@@ -68,6 +72,13 @@ public class RobotMap {
         gyro = new ADXRS450_Gyro();
         
         raisingMotor = new WPI_TalonSRX(0);
+        
+        armLeft = new WPI_VictorSPX(1);
+        armRight = new WPI_VictorSPX(2);
+        
+        climbMotor = new WPI_VictorSPX(3);
+        
+        
         
         liftRampPneumatic = new DoubleSolenoid(0, 1);
         armPneumatic = new DoubleSolenoid(2, 3);
