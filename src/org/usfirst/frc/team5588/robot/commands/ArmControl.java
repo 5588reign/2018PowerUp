@@ -28,15 +28,19 @@ public class ArmControl extends Command {
     	{
     		Robot.cubeyCollector.setSpeed(-1);
     	}
-    	if(Robot.oi.manipulatorJoystick.getYButton())
+    	else if(Robot.oi.manipulatorJoystick.getYButton())
     	{
-    		Robot.cubeyCollector.setSpeed(1);
+    		Robot.cubeyCollector.setSpeed(.5);
+    	}
+    	else
+    	{
+    		Robot.cubeyCollector.setSpeed(0);
     	}
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return false;  
     }
 
     // Called once after isFinished returns true

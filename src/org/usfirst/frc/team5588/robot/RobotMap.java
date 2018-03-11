@@ -10,13 +10,13 @@ package org.usfirst.frc.team5588.robot;
 import com.ctre.phoenix.motorcontrol.SensorCollection;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
-import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.PWMVictorSPX;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Talon;
@@ -44,9 +44,9 @@ public class RobotMap {
     public static DoubleSolenoid pinRelease;
     public static DoubleSolenoid releaseRamp;
     public static AnalogInput ai;
-    public static WPI_VictorSPX armLeft;
-    public static WPI_VictorSPX armRight;
-    public static WPI_VictorSPX climbMotor;
+    public static PWMVictorSPX armLeft;
+    public static PWMVictorSPX armRight;
+    public static PWMVictorSPX climbMotor;
     //public static SensorCollection sensor;
     
     //public static final int CAMERA_FORWARDS = 1;
@@ -73,10 +73,10 @@ public class RobotMap {
         
         raisingMotor = new WPI_TalonSRX(0);
         
-        armLeft = new WPI_VictorSPX(1);
-        armRight = new WPI_VictorSPX(2);
+        armLeft = new PWMVictorSPX(4);
+        armRight = new PWMVictorSPX(5);
         
-        climbMotor = new WPI_VictorSPX(3);
+        climbMotor = new PWMVictorSPX(3);
         
         
         

@@ -6,6 +6,7 @@ import org.usfirst.frc.team5588.robot.commands.ArmControl;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
+import edu.wpi.first.wpilibj.PWMVictorSPX;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
@@ -13,14 +14,14 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class CubeCollector extends Subsystem {
 
-	private final WPI_VictorSPX leftArm = RobotMap.armLeft;
-	private final WPI_VictorSPX rightArm = RobotMap.armRight;
+	private final PWMVictorSPX leftArm = RobotMap.armLeft;
+	private final PWMVictorSPX rightArm = RobotMap.armRight;
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 	public void setSpeed(double speed)
 	{
 		leftArm.set(speed);
-		rightArm.set(ControlMode.Follower, leftArm.getDeviceID());
+		rightArm.set(-speed);
 	}
 
     public void initDefaultCommand() {

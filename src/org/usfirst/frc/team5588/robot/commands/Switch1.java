@@ -9,6 +9,10 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
  */
 public class Switch1 extends CommandGroup {
 
+	public Switch1()
+	{
+		
+	}
 	
 	 @Override
 	 protected void initialize()

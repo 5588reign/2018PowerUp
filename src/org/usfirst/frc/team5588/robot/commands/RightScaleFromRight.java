@@ -9,9 +9,10 @@ public class RightScaleFromRight extends CommandGroup {
 
     public RightScaleFromRight() {
     	addSequential(new DriveForRotations(0.5, 324));
-    	addSequential(new TurnByGyro(.15, -90));
-    	addSequential(new DriveForRotations(0.5, 38));
-    	addSequential(new DriveForRotations(.1,10));   
+    	addSequential(new TurnByGyro(.2, -90));
+    	addSequential(new LiftByTime(5));
+    	addSequential(new DriveForRotations(0.1, 48));
+    	addSequential(new ArmAutoOpen());
     }
 }
 
