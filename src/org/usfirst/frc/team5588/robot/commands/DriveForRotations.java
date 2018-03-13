@@ -24,10 +24,12 @@ public class DriveForRotations extends Command {
         this.leftSpeed = oneSpeed;
         this.rightSpeed = -1 * oneSpeed;
         this.distance = distance;
+        
         // distance per pulse = PI * wheel diameter in inches / pulse per revolution * fudge factor;
         //change this
         //for zelda's fudge factor:
         final double distancePerPulse = (Math.PI * 5.90625)/ 256 * 1;  //converts pulses to inches
+        
         //for peach's fudge factor:
         //final double distancePerPulse = (Math.PI * 5.90625)/ 256 * .984;
     	RobotMap.rightEncoder.setDistancePerPulse(distancePerPulse);

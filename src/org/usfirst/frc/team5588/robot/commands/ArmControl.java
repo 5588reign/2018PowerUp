@@ -11,8 +11,7 @@ import edu.wpi.first.wpilibj.command.Command;
 public class ArmControl extends Command {
 
     public ArmControl() {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
+        // Use requires() here to declare subsystem dependencies eg. requires(chassis);
     	requires(CubeCollector.getInstance());
     	requires(Robot.cubeyCollector);
     }
@@ -24,11 +23,26 @@ public class ArmControl extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if(Robot.oi.manipulatorJoystick.getXButton())
+    	//Cubey Collector using the XBox Controller
+    	/*if(Robot.oi.manipulatorJoystick.getXButton())
     	{
     		Robot.cubeyCollector.setSpeed(-1);
     	}
     	else if(Robot.oi.manipulatorJoystick.getYButton())
+    	{
+    		Robot.cubeyCollector.setSpeed(.5);
+    	}
+    	else
+    	{
+    		Robot.cubeyCollector.setSpeed(0);
+    	}*/
+    	
+    	//Cubey Collector using Joystick
+    	if(Robot.oi.driverJoystick.getRawButton(5))
+    	{
+    		Robot.cubeyCollector.setSpeed(-1);
+    	}
+    	else if(Robot.oi.driverJoystick.getRawButton(6))
     	{
     		Robot.cubeyCollector.setSpeed(.5);
     	}

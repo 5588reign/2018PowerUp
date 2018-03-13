@@ -67,7 +67,6 @@ public class RobotMap {
         //peach and zelda
         rightEncoder = new Encoder(0,1);
         leftEncoder = new Encoder(2,3);
-         
         
         gyro = new ADXRS450_Gyro();
         
@@ -77,8 +76,6 @@ public class RobotMap {
         armRight = new PWMVictorSPX(5);
         
         climbMotor = new PWMVictorSPX(3);
-        
-        
         
         liftRampPneumatic = new DoubleSolenoid(0, 1);
         armPneumatic = new DoubleSolenoid(2, 3);

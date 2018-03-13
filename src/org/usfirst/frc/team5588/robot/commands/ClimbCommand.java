@@ -24,7 +24,12 @@ public class ClimbCommand extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	double fSpeed = deadzone(Robot.oi.manipulatorJoystick.getRawAxis(5));
-    	Robot.climber.setSpeed(fSpeed);
+    	if(fSpeed>0)
+		{
+			Robot.climber.setSpeed(0);
+		}
+		else
+			Robot.climber.setSpeed(-fSpeed);
     }
     
     private double deadzone(double in){

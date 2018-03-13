@@ -3,12 +3,10 @@ package org.usfirst.frc.team5588.robot.subsystems;
 import org.usfirst.frc.team5588.robot.RobotMap;
 import org.usfirst.frc.team5588.robot.commands.ClimbCommand;
 
-
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
 import edu.wpi.first.wpilibj.PWMVictorSPX;
 import edu.wpi.first.wpilibj.command.Subsystem;
-
 /**
  *
  */
@@ -18,11 +16,13 @@ public class Climber extends Subsystem {
     // here. Call these from Commands.
 	private final PWMVictorSPX climber = RobotMap.climbMotor;
 	
-	public void setSpeed(double speed){
+	public void setSpeed(double speed)
+	{
 		climber.set(speed);
 	}
 	
-    public void initDefaultCommand() {
+    public void initDefaultCommand() 
+    {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     	setDefaultCommand(new ClimbCommand());

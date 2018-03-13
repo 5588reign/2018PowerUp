@@ -24,7 +24,8 @@ public class CubeCollector extends Subsystem {
 		rightArm.set(-speed);
 	}
 
-    public void initDefaultCommand() {
+    public void initDefaultCommand() 
+    {
     	setDefaultCommand(new ArmControl());
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
