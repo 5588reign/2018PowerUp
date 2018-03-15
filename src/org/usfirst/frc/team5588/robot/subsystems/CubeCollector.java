@@ -18,10 +18,10 @@ public class CubeCollector extends Subsystem {
 	private final PWMVictorSPX rightArm = RobotMap.armRight;
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
-	public void setSpeed(double speed)
+	public void setSpeed(double lspeed, double rspeed)
 	{
-		leftArm.set(speed);
-		rightArm.set(-speed);
+		leftArm.set(lspeed);
+		rightArm.set(-rspeed);
 	}
 
     public void initDefaultCommand() 

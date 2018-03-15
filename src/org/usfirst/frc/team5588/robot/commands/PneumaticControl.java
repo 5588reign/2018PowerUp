@@ -14,6 +14,8 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class PneumaticControl extends Command {
 
+
+
 	//Value value = DoubleSolenoid.Value.kOff;
 	Compressor c;
 	DoubleSolenoid.Value reading;
@@ -32,7 +34,7 @@ public class PneumaticControl extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	c.setClosedLoopControl(true);
-    	if(port == 0)
+    	/*if(port == 0)
     	{
     		if(Robot.rampPneumaticValue)
     		{
@@ -42,8 +44,8 @@ public class PneumaticControl extends Command {
     		{
     			RobotMap.liftRampPneumatic.set(DoubleSolenoid.Value.kReverse);
     		}
-    	}
-    	else if(port == 2)
+    	}*/
+    	if(port == 2)
     	{
     		if(Robot.armPneumaticValue)
     		{
@@ -54,7 +56,7 @@ public class PneumaticControl extends Command {
     			RobotMap.armPneumatic.set(DoubleSolenoid.Value.kReverse);
     		}
     	}
-    	else if(port == 4)
+    	/*else if(port == 4)
     	{
     		RobotMap.pinRelease.set(DoubleSolenoid.Value.kReverse);
     		Timer.delay(1);
@@ -62,7 +64,7 @@ public class PneumaticControl extends Command {
     		Timer.delay(2);
     		RobotMap.releaseRamp.set(DoubleSolenoid.Value.kForward);
     		RobotMap.pinRelease.set(DoubleSolenoid.Value.kForward);
-    	}
+    	}*/
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -77,7 +79,7 @@ public class PneumaticControl extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	if(port == 0)
+    	/*if(port == 0)
     	{
     		if(Robot.rampPneumaticValue)
     		{
@@ -89,7 +91,7 @@ public class PneumaticControl extends Command {
     		}
     	}
     	else 
-    	{
+    	{*/
     		if(Robot.armPneumaticValue)
     		{
     			Robot.armPneumaticValue = false;
@@ -98,7 +100,7 @@ public class PneumaticControl extends Command {
     		{
     			Robot.armPneumaticValue = true;
     		}
-    	}
+    	//}
     }
 
     // Called when another command which requires one or more of the same

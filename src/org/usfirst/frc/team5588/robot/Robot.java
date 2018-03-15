@@ -39,7 +39,11 @@ import org.usfirst.frc.team5588.robot.commands.*;
 public class Robot extends IterativeRobot {
     
 
-	public static String gamedata = "";
+	public static String gamedata = 
+			
+			
+			
+			"";
 	
 	Command autonomousCommand;
 
@@ -53,15 +57,15 @@ public class Robot extends IterativeRobot {
 	SendableChooser<Command> fmsfallback = new SendableChooser<>();
 	
 	public static boolean armPneumaticValue = true;
-	public static boolean rampPneumaticValue = false; 
-	public static double positionOfLiftMachine = -1;
+	//public static boolean rampPneumaticValue = false; 
+	//public static double positionOfLiftMachine = -1;
 
-	int session;
-    Image frame;
-    CameraServer server;
-    static UsbCamera targetcam;
+	//int session;
+    //Image frame;
+    //CameraServer server;
+	static UsbCamera targetcam;
     static UsbCamera targetcam2;
-    int imaqError;
+    //int imaqError;
     
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -102,17 +106,17 @@ public class Robot extends IterativeRobot {
 		fmsfallback.addObject("left switch no drop", new GoLeftSwitchNoDrop());
 		
 		//chooser.addObject("My Auto", new MyAutoCommand());
-		SmartDashboard.putData("Auto mode", chooser);
+		SmartDashboard.putData("Auto modez", chooser);
 		SmartDashboard.putData("fallback", fmsfallback);
 		
-		server = CameraServer.getInstance();   
+		//server = CameraServer.getInstance();   
         
-        targetcam = server.startAutomaticCapture(0); 
+        targetcam = CameraServer.getInstance().startAutomaticCapture("camera low", 0); 
         targetcam.setBrightness(1);
        
         
         //currently camera not working
-        targetcam2 = server.startAutomaticCapture(1);
+        targetcam2 = CameraServer.getInstance().startAutomaticCapture("camera high", 1);
         targetcam2.setBrightness(1);
 	}
 

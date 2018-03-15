@@ -27,38 +27,38 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 public class OI {
 	public Joystick driverJoystick;
     public XboxController manipulatorJoystick;
-    public JoystickButton switchHeight;
-    public Trigger scale4;
-    public Trigger scale6;
-    public JoystickButton backDown;
-    public JoystickButton openCloseBox;
-    public JoystickButton unrollRamp;
-    public JoystickButton liftRamp;
+    //public JoystickButton switchHeight;
+    //public Trigger scale4;
+    //public Trigger scale6;
+    //public JoystickButton backDown;
+    //public JoystickButton openCloseBox;
+    //public JoystickButton unrollRamp;
+    //public JoystickButton liftRamp;
     public JoystickButton testTalon;
 
     public OI() {
         manipulatorJoystick = new XboxController(1);
         driverJoystick = new Joystick(0);
-        switchHeight = new JoystickButton(manipulatorJoystick, 2);
+        //switchHeight = new JoystickButton(manipulatorJoystick, 2);
         //scale4 = new 
         //scale6 = new Trigger(manipulatorJoystick, 12);
-        backDown = new JoystickButton(manipulatorJoystick, 1);
-        openCloseBox = new JoystickButton(manipulatorJoystick, 3);
+        //backDown = new JoystickButton(manipulatorJoystick, 1);
+        //openCloseBox = new JoystickButton(manipulatorJoystick, 3);
         //closeBox = new JoystickButton(manipulatorJoystick, 4);
-        unrollRamp = new JoystickButton(manipulatorJoystick, 8);
-        liftRamp = new JoystickButton(manipulatorJoystick, 6);
+        //unrollRamp = new JoystickButton(manipulatorJoystick, 8);
+        //liftRamp = new JoystickButton(manipulatorJoystick, 6);
         testTalon = new JoystickButton(driverJoystick, 2);
         
         //switchHeight.whenPressed(new LiftToHeight(400));
         //scale4.whenPressed(new DriveForRotations(0.1, 10));
         //scale6.whenPressed(new DriveForRotations(0.1, 15));
         //backDown.whenPressed(new DriveForRotations(0.2, 4));
-        openCloseBox.whenPressed(new PneumaticControl(2));
+        //openCloseBox.whenPressed(new PneumaticControl(2));
         //if(driverJoystick.getRawButton(5))
         //{
-        unrollRamp.whenPressed(new PneumaticControl(4));
+        //unrollRamp.whenPressed(new PneumaticControl(4));
     	//}
-        liftRamp.whenPressed(new PneumaticControl(0));
+        //liftRamp.whenPressed(new PneumaticControl(0));
         //01 - ramp
         //23 - arms 
         //45 - pin 
@@ -81,31 +81,4 @@ public class OI {
     }
 }
 
-	//// CREATING BUTTONS
-	// One type of button is a joystick button which is any button on a
-	//// joystick.
-	// You create one by telling it which joystick it's on and which button
-	// number it is.
-	// Joystick stick = new Joystick(port);
-	// Button button = new JoystickButton(stick, buttonNumber);
-
-	// There are a few additional built in buttons you can use. Additionally,
-	// by subclassing Button you can create custom triggers and bind those to
-	// commands the same as any other Button.
-
-	//// TRIGGERING COMMANDS WITH BUTTONS
-	// Once you have a button, it's trivial to bind it to a button in one of
-	// three ways:
-
-	// Start the command when the button is pressed and let it run the command
-	// until it is finished as determined by it's isFinished method.
-	// button.whenPressed(new ExampleCommand());
-
-	// Run the command while the button is being held down and interrupt it once
-	// the button is released.
-	// button.whileHeld(new ExampleCommand());
-
-	// Start the command when the button is released and let it run the command
-	// until it is finished as determined by it's isFinished method.
-	// button.whenReleased(new ExampleCommand());
-
+	

@@ -11,6 +11,7 @@ import com.ctre.phoenix.motorcontrol.SensorCollection;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
+import edu.wpi.cscore.UsbCamera;
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.AnalogInput;
@@ -34,19 +35,20 @@ import edu.wpi.first.wpilibj.interfaces.Gyro;
 public class RobotMap {
 	public static SpeedController driveLeftDrive;
     public static SpeedController driveRightDrive;
-    public static SpeedController climberMotor;
+    //public static SpeedController climberMotor;
     public static Encoder leftEncoder;
     public static Encoder rightEncoder;
     public static ADXRS450_Gyro gyro;
     public static WPI_TalonSRX raisingMotor;
-    public static DoubleSolenoid liftRampPneumatic;
+    //public static DoubleSolenoid liftRampPneumatic;
     public static DoubleSolenoid armPneumatic;
-    public static DoubleSolenoid pinRelease;
-    public static DoubleSolenoid releaseRamp;
+    //public static DoubleSolenoid pinRelease;
+    //public static DoubleSolenoid releaseRamp;
     public static AnalogInput ai;
     public static PWMVictorSPX armLeft;
     public static PWMVictorSPX armRight;
     public static PWMVictorSPX climbMotor;
+    
     //public static SensorCollection sensor;
     
     //public static final int CAMERA_FORWARDS = 1;
@@ -77,12 +79,13 @@ public class RobotMap {
         
         climbMotor = new PWMVictorSPX(3);
         
-        liftRampPneumatic = new DoubleSolenoid(0, 1);
+        //liftRampPneumatic = new DoubleSolenoid(0, 1);
         armPneumatic = new DoubleSolenoid(2, 3);
-        pinRelease = new DoubleSolenoid(4, 5);
-        releaseRamp  = new DoubleSolenoid(6, 7);
+        //pinRelease = new DoubleSolenoid(4, 5);
+        //releaseRamp  = new DoubleSolenoid(6, 7);
         
         ai = new AnalogInput(0);
+        
     }
 }
         

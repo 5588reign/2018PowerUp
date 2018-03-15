@@ -40,15 +40,23 @@ public class ArmControl extends Command {
     	//Cubey Collector using Joystick
     	if(Robot.oi.driverJoystick.getRawButton(5))
     	{
-    		Robot.cubeyCollector.setSpeed(-1);
+    		Robot.cubeyCollector.setSpeed(-.7, -.7);
     	}
     	else if(Robot.oi.driverJoystick.getRawButton(6))
     	{
-    		Robot.cubeyCollector.setSpeed(.5);
+    		Robot.cubeyCollector.setSpeed(.5, .5);
+    	}
+    	else if(Robot.oi.driverJoystick.getRawButton(3))
+    	{
+    		Robot.cubeyCollector.setSpeed(-.5, -.25);
+    	}
+    	else if(Robot.oi.driverJoystick.getRawButton(4))
+    	{
+    		Robot.cubeyCollector.setSpeed(-.25, -.5);
     	}
     	else
     	{
-    		Robot.cubeyCollector.setSpeed(0);
+    		Robot.cubeyCollector.setSpeed(0,0);
     	}
     }
 

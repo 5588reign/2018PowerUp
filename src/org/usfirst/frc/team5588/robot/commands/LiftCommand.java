@@ -41,7 +41,7 @@ public class LiftCommand extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	double readfSpeed = -deadzone(Robot.oi.manipulatorJoystick.getRawAxis(1));
-    	Robot.positionOfLiftMachine = -Robot.lift.getCounts();
+    	//Robot.positionOfLiftMachine = -Robot.lift.getCounts();
     	Robot.lift.set(ControlMode.PercentOutput, readfSpeed);
     	//System.out.println("Position is reading " + Robot.positionOfLiftMachine);
     	//Robot.lift.printRiseToRise();

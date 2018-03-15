@@ -11,10 +11,11 @@ public class LeftSwitchFromCenter extends CommandGroup {
     	addSequential(new DriveForRotations(0.35, 10));
     	addSequential(new TurnByGyro(.2, -71.4614));
     	addSequential(new DriveForRotations(0.35, 67));
+    	addSequential(new ArmAutoOpen(-.7));
     	addSequential(new TurnByGyro(.2, 71.4614));
     	addSequential(new LiftByTime(2));
     	addSequential(new DriveForRotations(0.35, 58));
-    	addSequential(new ArmAutoOpen());
+    	addSequential(new ArmAutoOpen(.5));
     	//addSequential(new DriveForRotations(.1, 13));
     	
     	//addSequential(new DriveForRotations(0.3, 48));

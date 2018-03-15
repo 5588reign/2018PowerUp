@@ -10,9 +10,10 @@ public class RightSwitchFromRight extends CommandGroup {
     public RightSwitchFromRight() {
     	addSequential(new DriveForRotations(0.3,148));
     	addSequential(new TurnByGyro(0.2, -90));
+    	addSequential(new ArmAutoOpen(-.7));
     	addSequential(new LiftByTime(2));
     	addSequential(new DriveForRotationsTimeLimit(.2, 3));
-    	addSequential(new ArmAutoOpen());
+    	addSequential(new ArmAutoOpen(.5));
     }
 }
 
