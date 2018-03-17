@@ -19,10 +19,13 @@ public class LeftSwitchFromRight extends CommandGroup {
     	addSequential(new DriveForRotations(0.3, 4)); //change if it goes too far or too little
     	addSequential(new TurnByGyro(0.2, -90));
     	addSequential(new DriveForRotations(0.3, 258.56));
+    	addSequential(new ArmAutoOpen(-.7));
     	addSequential(new TurnByGyro(0.2, 90));
     	addSequential(new DriveForRotations(.3, 90.25));
     	addSequential(new TurnByGyro(0.2, 90));
+    	addSequential(new LiftByTime(2));
     	addSequential(new DriveForRotations(.3, 4)); //fix num
+    	addSequential(new ArmAutoOpen(.5));
     }
 }
 

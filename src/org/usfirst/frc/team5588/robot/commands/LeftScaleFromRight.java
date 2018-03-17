@@ -10,11 +10,14 @@ public class LeftScaleFromRight extends CommandGroup {
     public LeftScaleFromRight() {
     	addSequential(new DriveForRotations(0.5, 246));
         addSequential(new TurnByGyro(0.15, -90));
+        addSequential(new ArmAutoOpen(-.7));
         addSequential(new DriveForRotations(0.5, 274.31));
         addSequential(new TurnByGyro(0.15, 90));
         addSequential(new DriveForRotations(0.5, 77.69));
         addSequential(new TurnByGyro(0.15, 90));
+        addSequential(new LiftByTime(5));
         addSequential(new DriveForRotations(0.5, 51.57));
+        addSequential(new ArmAutoOpen(.5));
         
     }
 }

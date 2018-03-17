@@ -9,13 +9,15 @@ public class LeftScaleFromCenter extends CommandGroup {
 
     public LeftScaleFromCenter() {
     	addSequential(new DriveForRotations(0.2,40));
-    	addSequential(new TurnByGyro(0.2, -90));
+    	//addSequential(new TurnByGyro(0.2, -90));
     	addSequential(new DriveForRotations(0.2, 106.44));
+    	addSequential(new ArmAutoOpen(-.7));
     	addSequential(new TurnByGyro(0.2, 90));
     	addSequential(new DriveForRotations(0.2, 221));
     	addSequential(new TurnByGyro(0.2, 90));
     	addSequential(new DriveForRotations(0.2, 60));
     	addSequential(new TurnByGyro(0.2, -90));
+    	//addSequential(new ArmAutoOpen(.5));
     	//addSequential(new UltrasonicCommand(0.2, 30));
     	//addSequential(new DriveForRotations())
         /*forward
